@@ -1,0 +1,80 @@
+.banner {
+    position: relative;
+    min-height: 100vh;
+    background: url(../img/emile-perron-xrVDYZRGdw4-unsplash.jpg);
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+
+    .textBx {
+        text-align: left;
+
+        span {
+            color: var(--white);
+
+            /* animation */
+            opacity: 0;
+            animation: slideLeft 0.5s ease-in-out forwards;
+            animation-delay: 1.2s;
+            transition: 0.5s;
+        }
+
+        h1 {
+            font-size: 3em;
+            color: var(--white);
+            font-weight: 900;
+            line-height: 1.5em;
+            text-transform: uppercase;
+
+            /* animation */
+            opacity: 0;
+            animation: slideLeft 0.5s ease-in-out forwards;
+            animation-delay: 1.2s;
+            transition: 0.5s;
+        }
+
+        h2 {
+            font-size: 1.5em;
+            color: var(--main-color);
+            font-weight: 500;
+            transition: 0.5s;
+
+            /* animation */
+            opacity: 0;
+            animation: slideLeft 0.5s ease-in-out forwards;
+            animation-delay: 1.4s;
+
+            i {
+                padding-right: 15px;
+            }
+        }
+    }
+}
+
+.btn {
+    background: var(--main-color);
+    display: inline-block;
+    color: var(--white);
+    margin-top: 20px;
+    padding: 10px 30px;
+    font-size: 18px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    transition: 0.2s;
+
+    /* animation */
+    opacity: 0;
+    animation: slideLeft 0.5s ease-in-out forwards;
+    animation-delay: 1.6s;
+
+    &:hover {
+        background: var(--hover);
+    }
+}
+
+@media (max-width: 680px) {
+    .banner h2 {
+        font-size: 2.5em;
+    }
+}

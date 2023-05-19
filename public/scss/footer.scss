@@ -1,0 +1,65 @@
+footer {
+    background: var(--black);
+    width: 100%;
+    padding: 100px;
+}
+
+body.dark footer {
+    border-top: 1px solid #444;
+}
+
+footer .container {
+    margin: 0 auto;
+    text-align: center;
+}
+
+/* About Us */
+
+ul.social-links {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.social-links li {
+    a {
+        display: inline-block;
+        width: 45px;
+        height: 45px;
+        background: var(--light-color);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-right: 10px;
+        border-radius: 4px;
+        transition: 0.4s;
+    }
+
+    &:last-child a {
+        margin-right: 0;
+    }
+
+    a {
+
+        .fa,
+        .fa-brands,
+        .fa-regular {
+            color: var(--white);
+        }
+
+        &:hover {
+            background: var(--main-color);
+        }
+    }
+}
+
+.copyright {
+    color: var(--white);
+    font-size: 13px;
+}
+
+@media (max-width: 991px) {
+    footer {
+        padding: 50px;
+    }
+}

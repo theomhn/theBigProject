@@ -1,0 +1,76 @@
+section#banner {
+    position: relative;
+    min-height: 100vh;
+    background: url(../img/rlcs-banner.webp);
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+}
+
+#banner .textBx {
+    position: absolute;
+    top: 74%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+#banner .textBx span {
+    color: var(--white);
+    /* animation */
+    opacity: 0;
+    animation: slideLeft 0.5s ease-in-out forwards;
+    animation-delay: 1.2s;
+    transition: 0.5s;
+}
+
+#banner .textBx h1 {
+    font-size: 3em;
+    color: var(--white);
+    font-weight: 900;
+    line-height: 1.5em;
+    text-transform: uppercase;
+    /* animation */
+    opacity: 0;
+    animation: slideLeft 0.5s ease-in-out forwards;
+    animation-delay: 1.2s;
+    transition: 0.5s;
+}
+
+#banner .textBx h2 {
+    font-size: 1.5em;
+    color: var(--main-color);
+    font-weight: 500;
+    transition: 0.5s;
+    /* animation */
+    opacity: 0;
+    animation: slideLeft 0.5s ease-in-out forwards;
+    animation-delay: 1.4s;
+}
+
+#banner .textBx h2 i {
+    padding-right: 15px;
+}
+
+.btn {
+    /* animation */
+    opacity: 0;
+    animation: slideLeft 0.5s ease-in-out forwards;
+    animation-delay: 1.6s;
+}
+
+.btn.sec {
+    background: var(--white);
+    color: var(--main-color);
+}
+
+.btn.sec:hover {
+    background: var(--hover-light);
+}
+
+@media (max-width: 680px) {
+    #banner h2 {
+        font-size: 2.5em;
+    }
+}

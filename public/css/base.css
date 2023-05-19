@@ -1,0 +1,157 @@
+/* Font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+*, ::before, ::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    outline: none;
+    border: none;
+    text-decoration: none;
+    list-style: none;
+    scroll-behavior: smooth;
+}
+
+/* Règle CSS qui permet de debugger facilement */
+/* * {
+    box-shadow: 0 0 0 3px red inset;
+} */
+
+:root {
+    --main-color: #f39c12;
+    --hover: #df9011;
+    --hover-light: #e6e6e6;
+    --red: red;
+    --black: #222;
+    --white: #fff;
+    --light-color: #777;
+    --light-bg: #f1f1f1;
+    --border: 1px solid var(--black);
+    --light-border: 1px solid var(--white);
+    --box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+}
+
+body {
+    font-family: "Poppins", sans-serif;
+    background: var(--light-bg);
+}
+
+body.dark {
+    background-color: var(--black);
+}
+
+section {
+    padding: 100px;
+    transition: 0.5s ease-out;
+}
+
+.btn {
+    display: inline-block;
+    min-width: 150px;
+    width: auto;
+    background-color: var(--main-color);
+    color: var(--white);
+    padding: 10px 30px;
+    margin: 10px 0;
+    text-transform: uppercase;
+    border-radius: 50px;
+    text-align: center;
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.btn:hover {
+    background: var(--hover);
+}
+
+.section-heading {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    margin-top: 20px;
+    color: var(--black);
+    /* Animation */
+    opacity: 0;
+    animation: slideTop 0.5s ease-in-out forwards;
+    animation-delay: 0.8s;
+}
+
+.section-heading h1 {
+    font-size: 2.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.section-heading h2 {
+    font-size: 1.5rem;
+    font-weight: 400;
+}
+
+.section-heading p {
+    opacity: 0;
+    animation: slideLeft 0.5s ease-in-out forwards;
+    animation-delay: 1.2s;
+}
+
+body.dark .section-heading h1,
+body.dark .section-heading h2,
+body.dark .section-heading p {
+    color: var(--white);
+}
+
+@keyframes slideRight {
+    0% {
+        transform: translateX(150px);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideLeft {
+    0% {
+        transform: translateX(-150px);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideTop {
+    0% {
+        transform: translateY(-150px);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideBottom {
+    0% {
+        transform: translateY(150px);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@media (max-width: 991px) {
+    section {
+        padding: 70px 15px 50px;
+    }
+}
