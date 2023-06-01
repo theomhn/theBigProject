@@ -1,7 +1,7 @@
 <section id="container">
     <div class="forms-container">
         <div id="signin-signup">
-            <form action="connexion" class="sign-in-form" onsubmit="sendFormSignIn(event)">
+            <form action="ws/login" method="POST" class="sign-in-form" onsubmit="sendFormSignIn(event)">
                 <h2 class="title">Connexion</h2>
                 <div class="input-box">
                     <i class="fas fa-user"></i>
@@ -12,8 +12,8 @@
                     <input type="password" name="password" id="password" placeholder="Votre mot de passe" required>
                 </div>
                 <div class="checkbox-box">
-                    <input type="checkbox" name="checkbox-connexion" id="checkbox-connexion">
-                    <label for="checkbox-connexion">Se souvenir de moi</label>
+                    <input type="checkbox" name="rememberMe" id="rememberMe">
+                    <label for="rememberMe">Se souvenir de moi</label>
                 </div>
                 <input type="submit" value="Connexion" class="btn solid">
                 <p class="social-text">Retrouvez moi sur :</p>
@@ -29,7 +29,7 @@
                     </a>
                 </div>
             </form>
-            <form action="inscription" method="POST" class="sign-up-form" onsubmit="sendFormSignUp(event)">
+            <form action="ws/users" method="POST" class="sign-up-form" onsubmit="sendFormSignUp(event)">
                 <h2 class="title">Inscription</h2>
                 <div class="input-box">
                     <i class="fas fa-user"></i>
@@ -110,5 +110,6 @@
             body: new FormData(form)
         })
         const data = await response.json()
+
     }
 </script>

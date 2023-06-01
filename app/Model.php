@@ -76,7 +76,9 @@ abstract class Model
         }
         $str  = substr($str, 0, -2);
 
-        return $this->_connexion->query("INSERT INTO $this->table ($fields) VALUES ($str);");
+        $this->_connexion->query("INSERT INTO $this->table ($fields) VALUES ($str);");
+
+        return $this->get($this->_connexion->lastInsertId());
     }
 
     public function update($params, $condition)
@@ -93,7 +95,7 @@ abstract class Model
         /** a tester/debug
          * 
          * verif la valeur retour de query true or false
-          */
+         */
         $values = array_values($condition);
 
         return $this->_connexion->query("DELETE FROM $this->table WHERE " . implode(' = ? AND ', array_keys($condition)) . ' = ?', $values);
