@@ -3,6 +3,8 @@
 abstract class Controller
 {
 
+    protected $modelName;
+
     protected $pdo = [];
 
     public function loadModel(string $model)
@@ -27,7 +29,7 @@ abstract class Controller
         extract($data);
 
         // On démarre le buffer de sortie
-        // Cela permet de tocker dans le cache tous ce qui est craché par PHP
+        // Cela permet de stocker dans le cache tous ce qui est craché par PHP
         // C'est ça que je cherchais mercredi, ça permet de mixer les vue tout ça, sans se faire chier à se souvenir de l'ordre de nos 'include'
         ob_start();
 
@@ -39,5 +41,21 @@ abstract class Controller
 
         // On fabrique le "template"
         require_once(ROOT . 'views/layouts/default.php');
+    }
+
+    public function getAll()
+    {
+        // Test si j'ai le droit
+        echo json_encode($this->pdo[$this->modelName]->getAll());
+    }
+    public function get($id)
+    {
+        // Test si j'ai le droit
+        echo json_encode($this->pdo[$this->modelName]->get($id));
+    }
+
+    public function delete($id)
+    {
+        $this->pdo[$this->modelName]->delete($id);
     }
 }
