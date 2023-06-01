@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost:8889
--- Généré le : mer. 10 mai 2023 à 15:57
+-- Généré le : lun. 22 mai 2023 à 15:21
 -- Version du serveur : 5.7.39
 -- Version de PHP : 8.2.0
 
@@ -18,55 +18,45 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de données : `theBigProject`
+-- Base de données : `thebigproject`
 --
+CREATE DATABASE IF NOT EXISTS `thebigproject` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+USE `thebigproject`;
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `Events`
+-- Structure de la table `scores`
 --
 
-CREATE TABLE `Events` (
-  `id` int(11) NOT NULL,
-  `nb_players` int(11) NOT NULL,
-  `date_start` datetime NOT NULL,
-  `date_end` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Déchargement des données de la table `Events`
---
-
-INSERT INTO `Events` (`id`, `nb_players`, `date_start`, `date_end`) VALUES
-(1, 6, '2023-04-05 13:42:12', '2023-04-05 13:42:12');
-
--- --------------------------------------------------------
-
---
--- Structure de la table `Scores`
---
-
-CREATE TABLE `Scores` (
+CREATE TABLE `scores` (
   `id` int(11) NOT NULL,
   `score_player_1` int(11) NOT NULL,
   `score_player_2` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+-- --------------------------------------------------------
+
 --
--- Déchargement des données de la table `Scores`
+-- Structure de la table `tournaments`
 --
 
-INSERT INTO `Scores` (`id`, `score_player_1`, `score_player_2`) VALUES
-(1, 3, 5);
+CREATE TABLE `tournaments` (
+  `id` int(11) NOT NULL,
+  `title` varchar(255) NOT NULL,
+  `game` varchar(255) NOT NULL,
+  `nbParticipants` int(11) NOT NULL,
+  `date_start` datetime NOT NULL,
+  `date_end` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `Users`
+-- Structure de la table `users`
 --
 
-CREATE TABLE `Users` (
+CREATE TABLE `users` (
   `id` int(11) NOT NULL,
   `pseudo` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
@@ -76,21 +66,13 @@ CREATE TABLE `Users` (
   `active` tinyint(1) DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Déchargement des données de la table `Users`
---
-
-INSERT INTO `Users` (`id`, `pseudo`, `email`, `password`, `salt`, `token`, `active`) VALUES
-(1, 'Theo', 'theo.menchon@hotmail.fr', 'test', '', 'test', 0),
-(2, 'NarKoZ', 'narkoz-hd@outlook.fr', '$2y$10$w.5UpaV4AR1P9wtI/dJVau9ps991.jwQgCnPctXVH6HYd0gr277Hi', '59501f1417596b7c1a3de04412771c57', '', 0);
-
 -- --------------------------------------------------------
 
 --
--- Structure de la table `Users_Events`
+-- Structure de la table `users_events`
 --
 
-CREATE TABLE `Users_Events` (
+CREATE TABLE `users_events` (
   `id` int(11) NOT NULL,
   `users_id` int(11) NOT NULL,
   `events_id` int(11) NOT NULL
@@ -101,27 +83,27 @@ CREATE TABLE `Users_Events` (
 --
 
 --
--- Index pour la table `Events`
+-- Index pour la table `scores`
 --
-ALTER TABLE `Events`
+ALTER TABLE `scores`
   ADD PRIMARY KEY (`id`);
 
 --
--- Index pour la table `Scores`
+-- Index pour la table `tournaments`
 --
-ALTER TABLE `Scores`
+ALTER TABLE `tournaments`
   ADD PRIMARY KEY (`id`);
 
 --
--- Index pour la table `Users`
+-- Index pour la table `users`
 --
-ALTER TABLE `Users`
+ALTER TABLE `users`
   ADD PRIMARY KEY (`id`);
 
 --
--- Index pour la table `Users_Events`
+-- Index pour la table `users_events`
 --
-ALTER TABLE `Users_Events`
+ALTER TABLE `users_events`
   ADD PRIMARY KEY (`id`),
   ADD KEY `users_id` (`users_id`),
   ADD KEY `events_id` (`events_id`);
@@ -131,27 +113,27 @@ ALTER TABLE `Users_Events`
 --
 
 --
--- AUTO_INCREMENT pour la table `Events`
+-- AUTO_INCREMENT pour la table `scores`
 --
-ALTER TABLE `Events`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+ALTER TABLE `scores`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT pour la table `Scores`
+-- AUTO_INCREMENT pour la table `tournaments`
 --
-ALTER TABLE `Scores`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+ALTER TABLE `tournaments`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT pour la table `Users`
+-- AUTO_INCREMENT pour la table `users`
 --
-ALTER TABLE `Users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+ALTER TABLE `users`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT pour la table `Users_Events`
+-- AUTO_INCREMENT pour la table `users_events`
 --
-ALTER TABLE `Users_Events`
+ALTER TABLE `users_events`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
@@ -159,11 +141,11 @@ ALTER TABLE `Users_Events`
 --
 
 --
--- Contraintes pour la table `Users_Events`
+-- Contraintes pour la table `users_events`
 --
-ALTER TABLE `Users_Events`
-  ADD CONSTRAINT `users_events_ibfk_1` FOREIGN KEY (`users_id`) REFERENCES `Users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `users_events_ibfk_2` FOREIGN KEY (`events_id`) REFERENCES `Events` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `users_events`
+  ADD CONSTRAINT `users_events_ibfk_1` FOREIGN KEY (`users_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `users_events_ibfk_2` FOREIGN KEY (`events_id`) REFERENCES `tournaments` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
