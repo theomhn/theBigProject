@@ -1,7 +1,7 @@
 <section id="container">
     <div class="forms-container">
         <div id="signin-signup">
-            <form action="" class="sign-in-form">
+            <form action="connexion" class="sign-in-form" onsubmit="sendFormSignIn(event)">
                 <h2 class="title">Connexion</h2>
                 <div class="input-box">
                     <i class="fas fa-user"></i>
@@ -29,7 +29,7 @@
                     </a>
                 </div>
             </form>
-            <form action="../Models/UserRegistration.php" method="POST" class="sign-up-form">
+            <form action="inscription" method="POST" class="sign-up-form" onsubmit="sendFormSignUp(event)">
                 <h2 class="title">Inscription</h2>
                 <div class="input-box">
                     <i class="fas fa-user"></i>
@@ -86,3 +86,29 @@
         </div>
     </div>
 </section>
+
+<script src="public/script/connexion.js"></script>
+
+<script>
+    async function sendFormSignUp(e) {
+        event.preventDefault();
+        const form = e.target
+        console.log(form);
+        const response = await fetch(form.getAttribute('action'), {
+            method: form.getAttribute('method'),
+            body: new FormData(form)
+        })
+        const data = await response.json()
+    }
+
+    async function sendFormSignIn(e) {
+        event.preventDefault();
+        const form = e.target
+        console.log(form);
+        const response = await fetch(form.getAttribute('action'), {
+            method: form.getAttribute('method'),
+            body: new FormData(form)
+        })
+        const data = await response.json()
+    }
+</script>
