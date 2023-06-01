@@ -41,11 +41,11 @@
                 </div>
                 <div class="input-box">
                     <i class="fas fa-lock"></i>
-                    <input type="password" name="password" id="password" minlength="8" placeholder="Votre mot de passe" required>
+                    <input type="password" name="password" id="password" placeholder="Votre mot de passe" required>
                 </div>
                 <div class="input-box">
                     <i class="fas fa-lock"></i>
-                    <input type="password" name="confirm-password" id="confirm-password" minlength="8" placeholder="Confirmer votre mot de passe" required>
+                    <input type="password" name="confirm-password" id="confirm-password" placeholder="Confirmer votre mot de passe" required>
                 </div>
                 <input type="submit" class="btn" value="Inscription">
                 <p class="social-text">Retrouvez moi sur :</p>

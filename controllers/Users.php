@@ -32,7 +32,32 @@ class Users extends Controller
 
     public function authentificate()
     {
-        
+        if (isset($_COOKIE['authentication'])) {
+            $user = $this->pdo['User']->getByToken($_COOKIE['authentication']);
+            if ($user && $user['active']) {
+                return $user;
+            }
+        }
+        return false;
+    }
+
+    private function sendValidationMail($user)
+    {
+        // génère un lien de validation du compte utilisateur
+        $lien = "http://localhost/TheBigProject/activate?token=" . $user['token'];
+
+        echo $lien;
+    }
+
+    public function activate()
+    {
+        $res = $this->pdo['User']->activate($_GET['token']);
+
+        if ($res) {
+            echo "compte activé";
+        } else {
+            echo "nom nom valide";
+        }
     }
 
     public function post() // create a new user
@@ -47,13 +72,6 @@ class Users extends Controller
         $user = $this->pdo['User']->create($obj);
         $this->sendValidationMail($user);
         echo json_encode($user);
-    }
-
-    private function sendValidationMail($user)
-    {
-        //générer lien
-        // envoie le mail avec lien
-        // palliatif : $user['link'] = lien
     }
 
     public function put()

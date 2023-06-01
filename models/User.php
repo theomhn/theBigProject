@@ -14,24 +14,33 @@ class User extends Model
         $user['token'] = bin2hex(random_bytes(32));
         $user['password'] = password_hash($user['password'] . $user['salt'], PASSWORD_DEFAULT);
 
-        $user = parent::create($user);
+        return parent::create($user);
     }
 
     public function getByCredentials(string $mail, string $password)
     {
-
         $user = $this->_connexion->query("SELECT * FROM $this->table WHERE email = '$mail';")->fetch(PDO::FETCH_ASSOC);
 
         if (!empty($user) && password_verify($password . $user['salt'], $user['password'])) {
             return $user;
         } else {
-            return false;
+            return null;
         }
     }
 
-
     public function getByToken(string $token)
     {
-        return [];
+        $user = $this->_connexion->query("SELECT * FROM $this->table WHERE token = '$token';")->fetch(PDO::FETCH_ASSOC);
+
+        return $user;
+    }
+
+    public function activate($token)
+    {
+        $res = $this->_connexion->query("UPDATE $this->table SET active = 1 WHERE token = '$token';");
+        if ($res->rowCount() == 1) {
+            return true;
+        }
+        return false;
     }
 }
