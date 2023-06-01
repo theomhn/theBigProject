@@ -1,0 +1,14 @@
+{
+  "name": "thebigproject",
+  "version": "1.0.0",
+  "description": "Cette documentation vous guide à travers le processus d'installation de l'application theBigProject sur un serveur local.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "sass": "^1.62.1"
+  }
+}
