@@ -43,7 +43,7 @@ Extrayez les fichiers zippés préalablement téléchargé dans le dossier cité
 ---
 
 ## **Étape 4 : Importer la base de données**
-1. Dans le dossier que vous avez téléchargé, vous trouverez un fichier nommé **bdd.sql**.
+1. Dans le dossier que vous avez téléchargé, vous trouverez un fichier nommé **theBigProject.sql**.
 2. Lancer votre serveur (WAMP ou MAMP) puis rendez-vous sur votre gestionnaire de bases de données **phpMyAdmin** accessible de votre navigateur favori.
 3. Saisissez dans la barre de recherche : 
     ```
