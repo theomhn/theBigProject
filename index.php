@@ -3,15 +3,16 @@
 // On génère une constante contenant le chemin vers la racine publique du projet
 // Plus propre que l'autre méthode
 define('ROOT', str_replace('index.php', '', $_SERVER['SCRIPT_FILENAME']));
+define('APP', '/' . basename(__DIR__));
 $GLOBALS['user'] = false;
 
 require_once ROOT . 'app/Router.php';
 require_once ROOT . 'app/Controller.php';
 require_once ROOT . 'app/Model.php';
-require_once ROOT . 'app/Security.php';
+require_once ROOT . 'controllers/Users.php';
 
-$security = new Security();
-$security->authentificate();
+$security = new Users();
+$GLOBALS['user'] = $security->authentificate();
 
 $router = new Router($_GET['url']);
 
@@ -21,11 +22,8 @@ $router->get('/connexion', "Bases#getConnexion");
 $router->get('/tournois', "Tournaments#getHome");
 $router->get('/lesTournois', "Tournaments#getAllTournaments");
 
-/** POST */
-$router->post('/tournois', "Tournaments#createTournament");
-$router->post('/inscription', "Users#post");
-//$router->put('/inscription', "Users#update");
-
+// API
+$router->post('/ws/login', "Users#login");
 $apiController = ["Users", "Tournaments"];
 foreach ($apiController as $controller) {
     $router->get("/ws/$controller", "$controller#getAll");
