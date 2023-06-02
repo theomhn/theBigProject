@@ -10,45 +10,24 @@
             const tournamentListDiv = document.getElementById('tournamentsList');
 
             tournaments.forEach(tournament => {
-
                 const tournamentDiv = document.createElement('div');
-                tournamentDiv.className = 'tournament';
-
-                const title = document.createElement('h3');
-                title.className = 'title';
-                title.innerHTML = "<strong>Titre tu tournoi : </strong>" + tournament.title;
-
-                const game = document.createElement('p');
-                game.className = 'description';
-                game.innerHTML = "<strong>Jeu : </strong>" + tournament.game;
-
-                const nbParticipants = document.createElement('p');
-                nbParticipants.className = 'nbParticipants';
-                nbParticipants.innerHTML = "<strong>Nombre maximum de participants : </strong>" + tournament.nbParticipants;
-
-                const dateStart = document.createElement('p');
-                dateStart.className = 'date';
-                dateStart.innerHTML = "<strong>Date de debut du tournoi : </strong>" + tournament.date_start;
-
-                const dateEnd = document.createElement('p');
-                dateEnd.className = 'date';
-                dateEnd.innerHTML = "<strong>Date de fin du tournoi : </strong>" + tournament.date_end;
-
-                // Ajouter les éléments au conteneur principal
-                tournamentDiv.appendChild(title);
-                tournamentDiv.appendChild(game);
-                tournamentDiv.appendChild(nbParticipants);
-                tournamentDiv.appendChild(dateStart);
-                tournamentDiv.appendChild(dateEnd);
-
-                tournamentListDiv.appendChild(tournamentDiv);
+                tournamentDiv.className = "tournament";
                 console.log(tournament);
+                tournamentDiv.innerHTML = `
+                <h3 class="tile"><strong>Titre tu tournoi : </strong><span>${tournament.title}</span></h3>
+                <p class="game"><strong>Jeu : </strong><span>${tournament.game}</span></p>
+                <p class="nbParticipants"><strong>Nombre maximum de participants : </strong><span>${tournament.nbParticipants}</span>
+                </p>
+                <p class="date"><strong>Date de debut du tournoi : </strong><span>${tournament.date_start}</span></p>
+                <p class="date"><strong>Date de fin du tournoi : </strong><span>${tournament.date_end}</span></p>
+                <button class="btn">Rejoindre !</button>`;
+                tournamentListDiv.appendChild(tournamentDiv);
+
             });
         } catch (error) {
             // Gérer les erreurs
             // ...
         }
     };
-
     fetchData();
 </script>
