@@ -20,25 +20,25 @@ $router->get('/', "Bases#getHome");
 $router->get('/connexion', "Bases#getConnexion");
 $router->get('/activate', "Users#activate");
 
-if (USER) {
-    $router->get('/tournois', "Tournaments#getHome");
-    $router->get('/lesTournois', "Tournaments#getAllTournaments");
-}
+/* if (USER) {
+} */
+$router->get('/tournois', "Tournaments#getHome");
+$router->get('/lesTournois', "Tournaments#getAllTournaments");
 
 // API
 $router->post('/ws/login', "Users#login");
 $router->post('/ws/users', "Users#post");
 
-if (USER) {
-    $apiController = ["Users", "Tournaments"];
-    foreach ($apiController as $controller) {
-        $router->get("/ws/$controller", "$controller#getAll");
-        $router->get("/ws/$controller/:id", "$controller#get");
-        $router->post("/ws/$controller/", "$controller#post");
-        $router->put("/ws/$controller/", "$controller#put");
-        $router->delete("/ws/$controller/:id", "$controller#delete");
-    }
+$apiController = ["Users", "Tournaments"];
+foreach ($apiController as $controller) {
+    $router->get("/ws/$controller", "$controller#getAll");
+    $router->get("/ws/$controller/:id", "$controller#get");
+    $router->post("/ws/$controller/", "$controller#post");
+    $router->put("/ws/$controller/", "$controller#put");
+    $router->delete("/ws/$controller/:id", "$controller#delete");
 }
+/* if (USER) {
+} */
 
 try {
     $router->run();
