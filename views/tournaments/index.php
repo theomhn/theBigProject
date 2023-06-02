@@ -36,5 +36,6 @@
             body: new FormData(form)
         })
         const data = await response.json()
+        alert('tournoi créé');
     }
 </script>
