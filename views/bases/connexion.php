@@ -90,17 +90,6 @@
 <script src="public/script/connexion.js"></script>
 
 <script>
-    async function sendFormSignUp(e) {
-        event.preventDefault();
-        const form = e.target
-        console.log(form);
-        const response = await fetch(form.getAttribute('action'), {
-            method: form.getAttribute('method'),
-            body: new FormData(form)
-        })
-        const data = await response.json()
-    }
-
     async function sendFormSignIn(e) {
         event.preventDefault();
         const form = e.target
@@ -110,6 +99,18 @@
             body: new FormData(form)
         })
         const data = await response.json()
+        alert('Vous êtes bien connecté(e)');
+    }
 
+    async function sendFormSignUp(e) {
+        event.preventDefault();
+        const form = e.target
+        console.log(form);
+        const response = await fetch(form.getAttribute('action'), {
+            method: form.getAttribute('method'),
+            body: new FormData(form)
+        })
+        const data = await response.json()
+        alert('Compte créé avec succès.');
     }
 </script>
