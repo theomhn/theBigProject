@@ -26,7 +26,7 @@ class Users extends Controller
 
             http_response_code(401);
 
-            echo json_encode('Mail ou mot de password incorrect');
+            echo json_encode('Adresse mail ou mot de password incorrect');
         }
     }
 
@@ -54,9 +54,9 @@ class Users extends Controller
         $res = $this->pdo['User']->activate($_GET['token']);
 
         if ($res) {
-            echo "compte activé";
+            echo "compte activé avec succès !";
         } else {
-            echo "nom nom valide";
+            echo "Aucun compte est en attente de validation avec cette adresse mail !";
         }
     }
 
