@@ -3,17 +3,17 @@
 abstract class Controller
 {
 
-    protected $modelName;
-
-    protected $pdo = [];
+    protected $model;
 
     public function loadModel(string $model)
     {
         // On va chercher le fichier correspondant au modèle souhaité
         require_once ROOT . 'models/' . $model . '.php';
 
+        return new $model();
+
         // On crée une instance de ce modèle. Ainsi "User" sera accessible par $this->User
-        $this->pdo[$model] = new $model();
+        //$this->pdo[$model] = new $model();
     }
 
     /**
@@ -46,16 +46,16 @@ abstract class Controller
     public function getAll()
     {
         // Test si j'ai le droit
-        echo json_encode($this->pdo[$this->modelName]->getAll());
+        echo json_encode($this->model->getAll());
     }
     public function get($id)
     {
         // Test si j'ai le droit
-        echo json_encode($this->pdo[$this->modelName]->get($id));
+        echo json_encode($this->model->get($id));
     }
 
     public function delete($id)
     {
-        $this->pdo[$this->modelName]->delete($id);
+        $this->model->delete($id);
     }
 }
