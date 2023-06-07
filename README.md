@@ -50,7 +50,7 @@ Extrayez les fichiers zippés préalablement téléchargé dans le dossier cité
     http://localhost/phpmyadmin
     ```
 4. Créez une nouvelle bdd nommé **theBigProject** encodé en **utf8mb4_general_ci**
-5. Puis importé le fichier **bdd.sql**
+5. Puis importé le fichier **theBigProject.sql**
 
 ---
 
