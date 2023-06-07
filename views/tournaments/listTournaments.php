@@ -19,7 +19,11 @@
                 </p>
                 <p class="date"><strong>Date de debut du tournoi : </strong><span>${tournament.date_start}</span></p>
                 <p class="date"><strong>Date de fin du tournoi : </strong><span>${tournament.date_end}</span></p>
-                <button class="btn" onClick="joinTournament(${tournament.id})">Rejoindre !</button>`;
+                <div class="allBtn">
+                    <a href="" class="btn" onClick="joinTournament(${tournament.id})">Rejoindre !</a>
+                    <button class="btn sec" onClick="showTournament(${tournament.id})">Voir</button>
+                </div>
+                `;
                 tournamentListDiv.appendChild(tournamentDiv);
                 console.log(tournament);
             });
@@ -45,6 +49,27 @@
                 console.log('Tournoi rejoint !');
                 alert('Vous avez bien rejoint le tournoi : ' + tournamentId);
                 // @TODO faire les actions nécessaires après avoir rejoint le tournoi, comme actualiser l'affichage, etc.
+            } else {
+                // Gérez les erreurs éventuelles
+                console.log('Erreur lors de la tentative de rejoindre le tournoi');
+            }
+        } catch (error) {
+            console.log('Erreur lors de la requête', error);
+        }
+    }
+
+    async function showTournament(tournamentId) {
+        try {
+            const response = await fetch(`ws/tournaments/${tournamentId}/`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({}) // Si j'ai besoin d'envoyer des données supplémentaires, c'est ici
+            });
+
+            if (response.ok) {
+
             } else {
                 // Gérez les erreurs éventuelles
                 console.log('Erreur lors de la tentative de rejoindre le tournoi');
