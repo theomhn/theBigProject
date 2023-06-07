@@ -2,11 +2,9 @@
 
 class Users extends Controller
 {
-    protected $modelName = "User";
-
     public function __construct()
     {
-        $this->loadModel($this->modelName);
+        $this->model = $this->loadModel("User");
     }
 
     public function login()
@@ -14,7 +12,7 @@ class Users extends Controller
         $mail = $_POST['email'];
         $password = $_POST['password'];
 
-        $user = $this->pdo['User']->getByCredentials($mail, $password);
+        $user = $this->model->getByCredentials($mail, $password);
 
         if ($user) {
             $seconds = isset($_POST['rememberMe']) ? time() + 60 * 60 * 24 * 365 : 0;
@@ -33,7 +31,7 @@ class Users extends Controller
     public function authentificate()
     {
         if (isset($_COOKIE['authentication'])) {
-            $user = $this->pdo['User']->getByToken($_COOKIE['authentication']);
+            $user = $this->model->getByToken($_COOKIE['authentication']);
             if ($user && $user['active']) {
                 return $user;
             }
@@ -51,7 +49,7 @@ class Users extends Controller
 
     public function activate()
     {
-        $res = $this->pdo['User']->activate($_GET['token']);
+        $res = $this->model->activate($_GET['token']);
 
         if ($res) {
             echo "compte activé avec succès !";
@@ -69,7 +67,7 @@ class Users extends Controller
             'password' => $_POST['password']
         ];
         /* var_dump($obj); */
-        $user = $this->pdo['User']->create($obj);
+        $user = $this->model->create($obj);
         $this->sendValidationMail($user);
         echo json_encode($user);
     }
@@ -79,6 +77,6 @@ class Users extends Controller
         /* a tester/debug  */
         $result = parse_str(file_get_contents('php://input'), $_PUT);
         var_dump($result);
-        echo json_encode($this->pdo['User']->update($_PUT));
+        echo json_encode($this->model->update($_PUT));
     }
 }
