@@ -1,9 +1,9 @@
-section#tournamentsList {
+section #tournamentsList {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
 }
-section#tournamentsList .tournament {
+section #tournamentsList .tournament {
   display: flex;
   justify-content: center;
   align-items: center;

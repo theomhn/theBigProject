@@ -1,19 +1,24 @@
-section#tournamentsList {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
+section {
 
-    .tournament {
+    #tournamentsList {
         display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-        background-color: #f2f2f2;
-        padding: 10px;
-        background: var(--light-color);
-        color: #fff;
-        width: calc((100% / 3) - 20px);
-        margin: 10px;
-        border-radius: 15px;
+        flex-direction: row;
+        flex-wrap: wrap;
+
+        .tournament {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            background-color: #f2f2f2;
+            padding: 10px;
+            background: var(--light-color);
+            color: #fff;
+            width: calc((100% / 3) - 20px);
+            margin: 10px;
+            border-radius: 15px;
+        }
     }
+
+
 }

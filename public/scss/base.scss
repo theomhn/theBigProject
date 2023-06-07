@@ -52,6 +52,7 @@ section {
 }
 
 .btn {
+    display: inline-block;
     min-width: 150px;
     width: auto;
     background-color: var(--main-color);
@@ -74,6 +75,13 @@ section {
         &:hover {
             background: var(--hover-light);
         }
+    }
+
+    &.transparent {
+        background: none;
+        border: 2px solid var(--white);
+        font-weight: 600;
+        font-size: 0.8rem;
     }
 }
 

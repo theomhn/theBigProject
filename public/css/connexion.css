@@ -204,13 +204,6 @@ body.dark .social-icon:hover {
   padding: 0.7rem 0;
 }
 
-.btn.transparent {
-  background: none;
-  border: 2px solid var(--white);
-  font-weight: 600;
-  font-size: 0.8rem;
-}
-
 .right-panel .image,
 .right-panel .content {
   transform: translateX(800px);

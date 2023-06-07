@@ -48,7 +48,9 @@ section {
 .allBtn {
   display: inline-block;
 }
-.allBtn .btn {
+
+.btn {
+  display: inline-block;
   min-width: 150px;
   width: auto;
   background-color: var(--main-color);
@@ -64,12 +66,18 @@ section {
   cursor: pointer;
   transition: 0.2s;
 }
-.allBtn .btn.sec {
+.btn.sec {
   background: var(--white);
   color: var(--main-color);
 }
-.allBtn .btn.sec:hover {
+.btn.sec:hover {
   background: var(--hover-light);
+}
+.btn.transparent {
+  background: none;
+  border: 2px solid var(--white);
+  font-weight: 600;
+  font-size: 0.8rem;
 }
 
 .section-heading {
