@@ -93,24 +93,30 @@
     async function sendFormSignIn(e) {
         event.preventDefault();
         const form = e.target
-        console.log(form);
-        const response = await fetch(form.getAttribute('action'), {
+        /* console.log(form); */
+        const connexion = await fetch(form.getAttribute('action'), {
             method: form.getAttribute('method'),
             body: new FormData(form)
         })
-        const data = await response.json()
-        alert('Vous êtes bien connecté(e)');
+        if (connexion.ok) {
+            window.location.href = 'lesTournois';
+        }
+        const data = await connexion.json()
+        console.log(data);
     }
 
     async function sendFormSignUp(e) {
         event.preventDefault();
         const form = e.target
-        console.log(form);
-        const response = await fetch(form.getAttribute('action'), {
+        /* console.log(form); */
+        const inscription = await fetch(form.getAttribute('action'), {
             method: form.getAttribute('method'),
             body: new FormData(form)
         })
-        const data = await response.json()
-        alert('Compte créé avec succès.');
+        if (inscription.ok) {
+            alert('Compte créé avec succès.');
+        }
+        const data = await inscription.json()
+        console.log(data);
     }
 </script>
