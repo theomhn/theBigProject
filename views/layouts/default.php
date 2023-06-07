@@ -49,8 +49,19 @@
         <ul class="menu">
             <li style="--i:1;"><a href="./" class="allLinks" onclick="toggleMenu();">
                     <i class="fas fa-home"></i> Home</a></li>
-            <li style="--i:2;"><a href="connexion" class="allLinks" onclick="toggleMenu();">
-                    <i class="fa-solid fa-user"></i> Connexion</a></li>
+            <?php if (USER !== false) {
+            ?>
+                <li style="--i:2;"><a href="lesTournois" class="allLinks" onclick="toggleMenu();">
+                        <i class="fa-solid fa-gamepad"></i> Les tournois</a></li>
+                <li style="--i:3;"><a href="connexion" class="allLinks" onclick="toggleMenu(); /* deleteCookie('authentication'); */">
+                        <i class="fa-solid fa-user"></i> Bonjour, <?= USER['pseudo']; ?></a></li>
+            <?php
+            } else {
+            ?>
+                <li style="--i:3;"><a href="connexion" class="allLinks" onclick="toggleMenu();">
+                        <i class="fa-solid fa-user"></i> Connexion</a></li>
+            <?php
+            } ?>
             <li class="dark-mode-box">
                 <input type="checkbox" class="dark-mode" id="dark-mode">
                 <label for="dark-mode" class="label">
@@ -100,8 +111,12 @@
     <!-- FontAwesome -->
     <script src="https://kit.fontawesome.com/263a91419d.js" crossorigin="anonymous"></script>
     <!-- Jquery -->
-    <script src="https://code.jquery.com/jquery-3.6.0.slim.js"></script>
-
+    <script src="https://code.jquery.com/jquery-3.6.0.slim.js"></script><!-- 
+    <script>
+        function deleteCookie(cookieName) {
+            document.cookie = cookieName + '=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+        }
+    </script> -->
     <!-- Scripts dynamique si besoin -->
     <?php if (!empty($scripts)) : ?>
         <?php foreach ($scripts as $script) : ?>
