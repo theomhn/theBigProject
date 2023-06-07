@@ -61,15 +61,6 @@ section#banner {
     opacity: 0;
     animation: slideLeft 0.5s ease-in-out forwards;
     animation-delay: 1.6s;
-
-    &.sec {
-        background: var(--white);
-        color: var(--main-color);
-
-        &:hover {
-            background: var(--hover-light);
-        }
-    }
 }
 
 @media (max-width: 680px) {

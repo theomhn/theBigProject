@@ -47,8 +47,11 @@ section {
     transition: 0.5s ease-out;
 }
 
-.btn {
+.allBtn {
     display: inline-block;
+}
+
+.btn {
     min-width: 150px;
     width: auto;
     background-color: var(--main-color);
@@ -64,8 +67,13 @@ section {
     cursor: pointer;
     transition: 0.2s;
 
-    &:hover {
-        background: var(--hover);
+    &.sec {
+        background: var(--white);
+        color: var(--main-color);
+
+        &:hover {
+            background: var(--hover-light);
+        }
     }
 }
 

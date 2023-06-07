@@ -55,13 +55,6 @@ section#banner {
   animation: slideLeft 0.5s ease-in-out forwards;
   animation-delay: 1.6s;
 }
-.btn.sec {
-  background: var(--white);
-  color: var(--main-color);
-}
-.btn.sec:hover {
-  background: var(--hover-light);
-}
 
 @media (max-width: 680px) {
   #banner h2 {

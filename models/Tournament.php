@@ -8,11 +8,11 @@ class Tournament extends Model
         parent::__construct("tournaments");
     }
 
-    public function join($userId, $tournamentId)
+    public function participants($id)
     {
-        //faire un requête qui récupère le l'utilisateur et une le tournoi !
 
-        //faire insertion en bdd dans la table event
-        $this->_connexion->query("INSERT INTO users_tournaments (user_id,tournament_id) VALUES ($userId, $tournamentId);");
+        $participants = $this->_connexion->query("SELECT u.pseudo FROM users u JOIN users_tournaments ut ON u.id = ut.user_id WHERE ut.tournament_id = $id")->fetch(PDO::FETCH_ASSOC);
+
+        return $participants;
     }
 }
