@@ -2,11 +2,10 @@
 
 class Tournaments extends Controller
 {
-    protected $modelName = "Tournament";
 
     public function __construct()
     {
-        $this->loadModel($this->modelName);
+        $this->model = $this->loadModel("Tournament");
     }
 
     public function getHome()
@@ -16,7 +15,24 @@ class Tournaments extends Controller
 
     public function getAllTournaments()
     {
-        $this->render("listTournaments" , ["styles" => ["tournament"]]);
+        $this->render("listTournaments", ["styles" => ["tournament"]]);
+    }
+
+    public function join($id)
+    {
+        $obj = [
+            'user_id' => USER['id'],
+            'tournament_id' => $id
+        ];
+
+        $associationModel = $this->loadModel('UserTournament');
+        if ($associationModel->create($obj)) {
+            echo json_encode(true);
+            
+        } else {
+            http_response_code(400);
+            echo json_encode(false);
+        }
     }
 
     public function post()
@@ -30,7 +46,9 @@ class Tournaments extends Controller
         ];
         /* var_dump($obj); */
 
-        $tournament = $this->pdo['Tournament']->create($obj);
+        $tournament = $this->model->create($obj);
         echo json_encode($tournament);
     }
+
+    
 }
