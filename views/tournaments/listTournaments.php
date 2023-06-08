@@ -4,7 +4,7 @@
 </section>
 <script>
     const fetchData = async () => {
-        const allTournaments = 'http://localhost/TheBigProject/ws/tournaments';
+        const allTournaments = 'http://localhost/theBigProject/ws/tournaments';
 
         try {
             const response = await fetch(allTournaments);

@@ -42,7 +42,7 @@ class Users extends Controller
     private function sendValidationMail($user)
     {
         // génère un lien de validation du compte utilisateur
-        $lien = "http://localhost/TheBigProject/activate?token=" . $user['token'];
+        $lien = "http://localhost/theBigProject/activate?token=" . $user['token'];
 
         echo $lien;
     }
