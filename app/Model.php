@@ -66,38 +66,32 @@ abstract class Model
     public function create($params)
     {
         $fields = implode(', ', array_keys($params));
-        /* $placeholders = rtrim(str_repeat('?, ', count($params)), ', '); */
         $values = array_values($params);
+        $placeholder = implode(', ', array_fill(0, count($values), '?'));
 
-        $str = '';
-
-        foreach ($values as $value) {
-            $str .= "'" . $value . "', ";
-        }
-        $str  = substr($str, 0, -2);
-
-        $this->_connexion->query("INSERT INTO $this->table ($fields) VALUES ($str);");
+        $this->_connexion->prepare("INSERT INTO $this->table ($fields) VALUES ($placeholder);")->execute($values);
 
         return $this->get($this->_connexion->lastInsertId());
     }
 
-    public function update($params, $condition)
+    public function update($id, $params)
     {
-        /* a tester/debug  */
-        $setClause = implode(' = ?, ', array_keys($params)) . ' = ?';
-        $values = array_merge(array_values($params), $condition);
+        $values = array_values($params);
+        $placeholder = [];
 
-        return $this->_connexion->query("UPDATE $this->table SET $setClause WHERE" . implode(' = ? AND ', array_keys($condition)) . ' = ?', $values);
+        foreach ($values as $key => $value) {
+            $placeholder[] = $key . " = ?";
+        }
+
+        $setClause = implode(', ', $placeholder);
+
+
+        $this->_connexion->prepare("UPDATE $this->table SET $setClause WHERE id = $id")->execute($values);
+        return $this->get($this->_connexion->lastInsertId());
     }
 
-    public function delete($condition)
+    public function delete($id)
     {
-        /** a tester/debug
-         * 
-         * verif la valeur retour de query true or false
-         */
-        $values = array_values($condition);
-
-        return $this->_connexion->query("DELETE FROM $this->table WHERE " . implode(' = ? AND ', array_keys($condition)) . ' = ?', $values);
+        $this->_connexion->query("DELETE FROM $this->table WHERE id = $id");
     }
 }
