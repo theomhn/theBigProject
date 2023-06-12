@@ -18,6 +18,11 @@ class Tournaments extends Controller
         $this->render("listTournaments", ["styles" => ["tournament"]]);
     }
 
+    public function getScores()
+    {
+        $this->render("saisirScore", ["styles" => ["tournament"]]);
+    }
+
     public function join($idTournament)
     {
         $tournament = $this->model->get($idTournament);
