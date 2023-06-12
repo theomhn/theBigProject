@@ -76,15 +76,13 @@ abstract class Model
 
     public function update($id, $params)
     {
-        $values = array_values($params);
         $placeholder = [];
-
-        foreach ($values as $key => $value) {
+        foreach ($params as $key => $value) {
             $placeholder[] = $key . " = ?";
         }
-
         $setClause = implode(', ', $placeholder);
 
+        $values = array_values($params);
 
         $this->_connexion->prepare("UPDATE $this->table SET $setClause WHERE id = $id")->execute($values);
         return $this->get($this->_connexion->lastInsertId());
