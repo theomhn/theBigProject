@@ -99,7 +99,7 @@
             body: new FormData(form)
         })
         if (connexion.ok) {
-            window.location.href = 'lesTournois';
+            window.location.href = 'les-tournois';
         }
         const data = await connexion.json()
         console.log(data);

@@ -51,9 +51,9 @@
                     <i class="fas fa-home"></i> Home</a></li>
             <?php if (USER !== false) {
             ?>
-                <li style="--i:2;"><a href="lesTournois" class="allLinks" onclick="toggleMenu();">
+                <li style="--i:2;"><a href="les-tournois" class="allLinks" onclick="toggleMenu();">
                         <i class="fa-solid fa-gamepad"></i> Les tournois</a></li>
-                <li style="--i:3;"><a href="connexion" class="allLinks" onclick="toggleMenu(); /* deleteCookie('authentication'); */">
+                <li style="--i:3;"><a href="deconnexion" class="allLinks" onclick="toggleMenu(); /* deleteCookie('authentication'); */">
                         <i class="fa-solid fa-user"></i> Bonjour, <?= USER['pseudo']; ?></a></li>
             <?php
             } else {

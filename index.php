@@ -21,7 +21,8 @@ $router->get('/activate', "Users#activate");
 
 if (USER !== false) {
     $router->get('/tournois', "Tournaments#getHome");
-    $router->get('/lesTournois', "Tournaments#getAllTournaments");
+    $router->get('/les-tournois', "Tournaments#getAllTournaments");
+    $router->get('/saisir-les-scores', "Tournaments#getScores");
 }
 
 // API
