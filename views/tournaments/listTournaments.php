@@ -23,7 +23,7 @@
                     <p class="date"><strong>Date de debut du tournoi : </strong><span>${tournament.date_start}</span></p>
                     <p class="date"><strong>Date de fin du tournoi : </strong><span>${tournament.date_end}</span></p>
                     <div class="allBtn">
-                        <a href="" class="btn" onClick="joinTournament(${tournament.id})">Rejoindre !</a>
+                        <button class="btn" onClick="joinTournament(${tournament.id})">Rejoindre !</button>
                         <button class="btn sec" onClick="showTournament(${tournament.id})">Voir</button>
                     </div>
                 `;
@@ -49,8 +49,8 @@
 
             if (join.ok) {
                 // Le tournoi a été rejoint avec succès
-                console.log('Tournoi rejoint !');
-                alert('Vous avez bien rejoint le tournoi : ' + tournamentId);
+                console.log('Vous avez bien rejoint le tournoi : ' + tournamentId);
+                /* alert('Vous avez bien rejoint le tournoi : ' + tournamentId); */
                 // @TODO faire les actions nécessaires après avoir rejoint le tournoi, comme actualiser l'affichage, etc.
             } else {
                 // Gérez les erreurs éventuelles
