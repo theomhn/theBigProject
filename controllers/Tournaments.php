@@ -18,6 +18,11 @@ class Tournaments extends Controller
         $this->render("listTournaments", ["styles" => ["tournament"]]);
     }
 
+    public function getTournamentView()
+    {
+        $this->render("showTournament", ["styles" => ["tournament"]]);
+    }
+
     public function getScores()
     {
         $this->render("saisirScore", ["styles" => ["tournament"]]);
@@ -85,6 +90,12 @@ class Tournaments extends Controller
         }
 
         echo json_encode(true);
+    }
+
+    public function getParticipants($id)
+    {
+        // Test si j'ai le droit
+        echo json_encode($this->model->getParticipants($id));
     }
 
     public function post()
