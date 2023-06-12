@@ -23,6 +23,7 @@ if (USER !== false) {
     $router->get('/tournois', "Tournaments#getHome");
     $router->get('/les-tournois', "Tournaments#getAllTournaments");
     $router->get('/saisir-les-scores', "Tournaments#getScores");
+    $router->get('/tournoi/:id', "Tournaments#getTournamentView");
 }
 
 // API
@@ -33,13 +34,20 @@ $router->post('/ws/users', "Users#post");
 
 if (USER !== false) {
     $router->post("/ws/tournaments/:id/join", "Tournaments#join");
-    foreach ($apiController as $controller) {
-        $router->get("/ws/$controller", "$controller#getAll");
-        $router->get("/ws/$controller/:id", "$controller#get");
-        $router->post("/ws/$controller/", "$controller#post");
-        $router->put("/ws/$controller/", "$controller#put");
-        $router->delete("/ws/$controller/:id", "$controller#delete");
-    }
+    $router->get("/ws/tournaments/:id/users", "Tournaments#getParticipants");
+
+    /* Users */
+    // $router->get("/ws/Users/:id", "Users#get");
+    $router->post("/ws/Users/", "Users#post");
+    // $router->put("/ws/Users/", "Users#put");
+    // $router->delete("/ws/Users/:id", "Users#delete");
+
+    /* Tournaments */
+    $router->get("/ws/Tournaments", "Tournaments#getAll");
+    $router->get("/ws/Tournaments/:id", "Tournaments#get");
+    $router->post("/ws/Tournaments/", "Tournaments#post");
+    // $router->put("/ws/Tournaments/", "Tournaments#put");
+    // $router->delete("/ws/Tournaments/:id", "Tournaments#delete");
 }
 
 try {
