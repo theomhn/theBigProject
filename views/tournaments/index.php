@@ -21,7 +21,7 @@
             <input type="datetime-local" name="dateEnd" id="dateEnd">
         </div>
         <div class="input-box">
-            <input type="submit" id="submit" value="Créer le tournois">
+            <input class="btn" type="submit" id="submit" value="Créer le tournoi">
         </div>
     </form>
 </section>
