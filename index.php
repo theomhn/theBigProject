@@ -27,8 +27,6 @@ if (USER !== false) {
 }
 
 // API
-$apiController = ["Users", "Tournaments"];
-
 $router->post('/ws/login', "Users#login");
 $router->post('/ws/users', "Users#post");
 
