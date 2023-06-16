@@ -72,7 +72,7 @@
             });
 
             if (response.ok) {
-
+                window.location.href = `tournoi/${tournamentId}`;
             } else {
                 // Gérez les erreurs éventuelles
                 console.log('Erreur lors de la tentative de rejoindre le tournoi');

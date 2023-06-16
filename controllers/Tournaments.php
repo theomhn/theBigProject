@@ -8,26 +8,6 @@ class Tournaments extends Controller
         $this->model = $this->loadModel("Tournament");
     }
 
-    public function getHome()
-    {
-        $this->render("index", ["styles" => ["tournament"]]);
-    }
-
-    public function getAllTournaments()
-    {
-        $this->render("listTournaments", ["styles" => ["tournament"]]);
-    }
-
-    public function getTournamentView()
-    {
-        $this->render("showTournament", ["styles" => ["tournament"]]);
-    }
-
-    public function getScores()
-    {
-        $this->render("saisirScore", ["styles" => ["tournament"]]);
-    }
-
     public function join($idTournament)
     {
         $tournament = $this->model->get($idTournament);
@@ -74,7 +54,6 @@ class Tournaments extends Controller
         $games = $this->model->getGames($idTournament); // récupère les games d'un tournoi
         $lastGame = end($games); // récupère le dernier game créé
         $gameModel = $this->loadModel('Game');
-
 
         if (!$lastGame || !empty($lastGame['user1_id']) && !empty($lastGame['user2_id'])) {
             $obj = [

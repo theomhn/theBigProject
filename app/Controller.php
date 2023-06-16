@@ -34,7 +34,7 @@ abstract class Controller
         ob_start();
 
         // Crée le chemin et inclut le fichier de vue
-        require_once(ROOT . 'views/' . strtolower(get_class($this)) . '/' . $fichier . '.php');
+        require_once(ROOT . 'views/' . $fichier . '.php');
 
         // On stocke le contenu dans $content
         $content = ob_get_clean();

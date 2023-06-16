@@ -20,10 +20,10 @@ $router->get('/connexion', "Bases#getConnexion");
 $router->get('/activate', "Users#activate");
 
 if (USER !== false) {
-    $router->get('/tournois', "Tournaments#getHome");
-    $router->get('/les-tournois', "Tournaments#getAllTournaments");
-    $router->get('/saisir-les-scores', "Tournaments#getScores");
-    $router->get('/tournoi/:id', "Tournaments#getTournamentView");
+    $router->get('/tournois', "Bases#getTournamentHome");
+    $router->get('/les-tournois', "Bases#getAllTournaments");
+    $router->get('/saisir-les-scores', "Bases#getScores");
+    $router->get('/tournoi/:id', "Bases#getTournamentView");
 }
 
 // API

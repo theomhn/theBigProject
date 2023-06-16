@@ -17,4 +17,24 @@ class Bases extends Controller
     {
         $this->render("404");
     }
+
+    public function getTournamentHome()
+    {
+        $this->render("createTournament", ["styles" => ["tournament"]]);
+    }
+
+    public function getAllTournaments()
+    {
+        $this->render("listTournaments", ["styles" => ["tournament"]]);
+    }
+
+    public function getTournamentView($id)
+    {
+        $this->render("showTournament", ["styles" => ["tournament"], "id" => $id]);
+    }
+
+    public function getScores()
+    {
+        $this->render("saisirScore", ["styles" => ["tournament"]]);
+    }
 }
