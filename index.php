@@ -31,21 +31,20 @@ $router->post('/ws/login', "Users#login");
 $router->post('/ws/users', "Users#post");
 
 if (USER !== false) {
+
+    /* Users */
+    $router->post("/ws/users/", "Users#post");
+    $router->get('/ws/logout/', "Users#logout");
+
+    /* Tournaments */
+    $router->get("/ws/tournaments", "Tournaments#getAll");
+    $router->get("/ws/tournaments/:id", "Tournaments#get");
+    $router->post("/ws/tournaments/", "Tournaments#post");
     $router->post("/ws/tournaments/:id/join", "Tournaments#join");
     $router->get("/ws/tournaments/:id/users", "Tournaments#getParticipants");
 
-    /* Users */
-    // $router->get("/ws/Users/:id", "Users#get");
-    $router->post("/ws/Users/", "Users#post");
-    // $router->put("/ws/Users/", "Users#put");
-    // $router->delete("/ws/Users/:id", "Users#delete");
-
-    /* Tournaments */
-    $router->get("/ws/Tournaments", "Tournaments#getAll");
-    $router->get("/ws/Tournaments/:id", "Tournaments#get");
-    $router->post("/ws/Tournaments/", "Tournaments#post");
-    // $router->put("/ws/Tournaments/", "Tournaments#put");
-    // $router->delete("/ws/Tournaments/:id", "Tournaments#delete");
+    /* Games */
+    $router->put("/ws/match/:id", "Games#setScore");
 }
 
 try {
