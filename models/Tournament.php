@@ -18,9 +18,9 @@ class Tournament extends Model
         return $participants;
     }
 
-    public function getGames($idTournament)
+    public function getGamesPerStep($idTournament, $step)
     {
-        $games = $this->_connexion->query("SELECT * FROM matchs WHERE tournament_id = $idTournament ORDER BY id;")->fetchAll(PDO::FETCH_ASSOC);
+        $games = $this->_connexion->query("SELECT * FROM matchs WHERE tournament_id = $idTournament AND step = $step ORDER BY id;")->fetchAll(PDO::FETCH_ASSOC);
 
         if ($games === false) {
             return [];

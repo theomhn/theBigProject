@@ -51,11 +51,11 @@ class Tournaments extends Controller
             return true;
         }
 
-        $games = $this->model->getGames($idTournament); // récupère les games d'un tournoi
+        $games = $this->model->getGamesPerStep($idTournament, 0); // récupère les games d'un tournoi
         $lastGame = end($games); // récupère le dernier game créé
         $gameModel = $this->loadModel('Game');
 
-        if (!$lastGame || !empty($lastGame['user1_id']) && !empty($lastGame['user2_id'])) {
+        if (!$lastGame || !empty($lastGame['user2_id'])) {
             $obj = [
                 'tournament_id' => $idTournament,
                 'user1_id' => USER['id'],
