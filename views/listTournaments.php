@@ -1,5 +1,5 @@
 <section>
-    <a href="tournois">Créer un tournoi !</a>
+    <a class="btn" href="tournois">Créer un tournoi !</a>
     <div id="tournamentsList"></div>
 </section>
 <script>
