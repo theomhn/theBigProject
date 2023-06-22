@@ -7,6 +7,12 @@ class Users extends Controller
         $this->model = $this->loadModel("User");
     }
 
+    public function logout()
+    { 
+        setcookie('authentication', "", -1, APP, false, true);
+        echo json_encode(true);
+    }
+
     public function login()
     {
         $mail = $_POST['email'];
@@ -17,7 +23,7 @@ class Users extends Controller
         if ($user) {
             $seconds = isset($_POST['rememberMe']) ? time() + 60 * 60 * 24 * 365 : 0;
 
-            setcookie('authentication', $user['token'], $seconds, APP);
+            setcookie('authentication', $user['token'], $seconds, APP, false, true);
 
             echo json_encode($user['token']);
         } else {

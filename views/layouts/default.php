@@ -53,8 +53,10 @@
             ?>
                 <li style="--i:2;"><a href="les-tournois" class="allLinks" onclick="toggleMenu();">
                         <i class="fa-solid fa-gamepad"></i> Les tournois</a></li>
-                <li style="--i:3;"><a href="deconnexion" class="allLinks" onclick="toggleMenu(); /* deleteCookie('authentication'); */">
+                <li style="--i:3;"><a class="allLinks" onclick="toggleMenu();">
                         <i class="fa-solid fa-user"></i> Bonjour, <?= USER['pseudo']; ?></a></li>
+                <li style="--i:4;"><a href="" class="allLinks" onclick="toggleMenu();" onmousedown="logout();">
+                        <i class="fa-solid fa-right-from-bracket"></i> Déconnexion</a></li>
             <?php
             } else {
             ?>
@@ -111,12 +113,12 @@
     <!-- FontAwesome -->
     <script src="https://kit.fontawesome.com/263a91419d.js" crossorigin="anonymous"></script>
     <!-- Jquery -->
-    <script src="https://code.jquery.com/jquery-3.6.0.slim.js"></script><!-- 
+    <script src="https://code.jquery.com/jquery-3.6.0.slim.js"></script>
     <script>
-        function deleteCookie(cookieName) {
-            document.cookie = cookieName + '=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+        async function logout() {
+            const response = await fetch('ws/logout');
         }
-    </script> -->
+    </script>
     <!-- Scripts dynamique si besoin -->
     <?php if (!empty($scripts)) : ?>
         <?php foreach ($scripts as $script) : ?>
