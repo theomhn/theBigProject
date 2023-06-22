@@ -89,15 +89,11 @@
                     </a>
                 </li>
                 <li>
-                    <a href="https://github.com/theomhn?tab=repositories" target="_blank"><i class="fa-brands fa-github"></i>
+                    <a href="https://github.com/theomhn/theBigProject" target="_blank"><i class="fa-brands fa-github"></i>
                     </a>
                 </li>
                 <li>
                     <a href="mailto:theo.menchon@hotmail.fr"><i class="fa-regular fa-envelope"></i>
-                    </a>
-                </li>
-                <li>
-                    <a href="https://www.behance.net/theomenchon" target="_blank"><i class="fa-brands fa-behance"></i>
                     </a>
                 </li>
             </ul>
