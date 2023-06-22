@@ -44,7 +44,7 @@ class Users extends Controller
         // génère un lien de validation du compte utilisateur
         $lien = "http://localhost/theBigProject/activate?token=" . $user['token'];
 
-        echo $lien;
+        return $lien;
     }
 
     public function activate()
@@ -60,16 +60,21 @@ class Users extends Controller
 
     public function post() // create a new user
     {
-
         $obj = [
             'pseudo' => $_POST['pseudo'],
             'email' => $_POST['email'],
             'password' => $_POST['password']
         ];
-        /* var_dump($obj); */
-        $user = $this->model->create($obj);
-        $this->sendValidationMail($user);
-        echo json_encode($user);
+
+        try {
+            $user = $this->model->create($obj);
+            // @TODO vraiment envoyer le mail
+            $link = $this->sendValidationMail($user);
+            echo json_encode($link);
+        } catch (Exception $ex) {
+            http_response_code(400);
+            echo json_encode("Mail déjà inscrit !");
+        }
     }
 
     public function put()

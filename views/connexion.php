@@ -48,6 +48,8 @@
                     <input type="password" name="confirm-password" id="confirm-password" placeholder="Confirmer votre mot de passe" required>
                 </div>
                 <input type="submit" class="btn" value="Inscription">
+                <a href="" id="accountValidation"></a>
+
                 <p class="social-text">Retrouvez moi sur :</p>
                 <div class="social-media">
                     <a href="https://github.com/theomhn/theBigProject" class="social-icon">
@@ -92,8 +94,7 @@
 <script>
     async function sendFormSignIn(e) {
         event.preventDefault();
-        const form = e.target
-        /* console.log(form); */
+        const form = e.target;
         const connexion = await fetch(form.getAttribute('action'), {
             method: form.getAttribute('method'),
             body: new FormData(form)
@@ -107,16 +108,22 @@
 
     async function sendFormSignUp(e) {
         event.preventDefault();
-        const form = e.target
-        /* console.log(form); */
+        const form = e.target;
         const inscription = await fetch(form.getAttribute('action'), {
             method: form.getAttribute('method'),
             body: new FormData(form)
         })
+        const accountValidation = document.getElementById("accountValidation");
+
         if (inscription.ok) {
-            alert('Compte créé avec succès.');
+            const link = await inscription.json();
+
+            accountValidation.setAttribute('href', link);
+            accountValidation.innerHTML = 'Validez votre compte';
+        } else {
+            accountValidation.style.color = "black"
+            accountValidation.setAttribute('href', 'connexion');
+            accountValidation.innerHTML = 'Un compte existe déjà avec cette adresse mail.';
         }
-        const data = await inscription.json()
-        console.log(data);
     }
 </script>
