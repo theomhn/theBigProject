@@ -54,6 +54,12 @@ abstract class Controller
         echo json_encode($this->model->get($id));
     }
 
+    public function put()
+    {
+        parse_str(file_get_contents('php://input'), $_PUT);
+        echo json_encode($this->model->update($_PUT));
+    }
+
     public function delete($id)
     {
         $this->model->delete($id);

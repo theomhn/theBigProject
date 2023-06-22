@@ -82,12 +82,4 @@ class Users extends Controller
             echo json_encode("Mail déjà inscrit !");
         }
     }
-
-    public function put()
-    {
-        /* a tester/debug  */
-        $result = parse_str(file_get_contents('php://input'), $_PUT);
-        var_dump($result);
-        echo json_encode($this->model->update($_PUT));
-    }
 }
