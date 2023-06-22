@@ -22,8 +22,7 @@ $router->get('/activate', "Users#activate");
 if (USER !== false) {
     $router->get('/tournois', "Bases#getTournamentHome");
     $router->get('/les-tournois', "Bases#getAllTournaments");
-    $router->get('/saisir-les-scores', "Bases#getScores");
-    $router->get('/tournoi/:id', "Bases#getTournamentView");
+    $router->get('/tournois/:id', "Bases#getTournamentView");
 }
 
 // API
@@ -33,18 +32,19 @@ $router->post('/ws/users', "Users#post");
 if (USER !== false) {
 
     /* Users */
-    $router->post("/ws/users/", "Users#post");
-    $router->get('/ws/logout/', "Users#logout");
+    $router->post("/ws/users", "Users#post");
+    $router->get('/ws/logout', "Users#logout");
 
     /* Tournaments */
     $router->get("/ws/tournaments", "Tournaments#getAll");
     $router->get("/ws/tournaments/:id", "Tournaments#get");
+    $router->get("/ws/tournaments/:id/users", "Tournaments#getParticipants");
     $router->post("/ws/tournaments/", "Tournaments#post");
     $router->post("/ws/tournaments/:id/join", "Tournaments#join");
-    $router->get("/ws/tournaments/:id/users", "Tournaments#getParticipants");
 
     /* Games */
-    $router->put("/ws/match/:id", "Games#setScore");
+    $router->get("/ws/games/:id", "Games#get");
+    $router->put("/ws/games/:id", "Games#setScore");
 }
 
 try {
