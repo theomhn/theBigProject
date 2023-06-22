@@ -32,9 +32,4 @@ class Bases extends Controller
     {
         $this->render("showTournament", ["styles" => ["tournament"], "id" => $id]);
     }
-
-    public function getScores()
-    {
-        $this->render("saisirScore", ["styles" => ["tournament"]]);
-    }
 }
