@@ -1,5 +1,8 @@
 <?php
 
+/**
+ * Classe qui permet d'afficher les views
+ */
 class Bases extends Controller
 {
 

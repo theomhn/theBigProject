@@ -14,6 +14,11 @@ abstract class Model
     // Propriétés permettant de personnaliser les requêtes
     public $table;
 
+    /**
+     * Constructeur de la classe Model
+     *
+     * @param string $table
+     */
     public function __construct($table)
     {
         $this->table = $table;
@@ -21,7 +26,7 @@ abstract class Model
     }
 
     /**
-     * Fonction d'initialisation de la base de données
+     * Établit une connexion à la base de données
      *
      * @return void
      */
@@ -39,30 +44,45 @@ abstract class Model
         }
     }
 
+    /**
+     * Récupère tous les enregistrements de la table
+     *
+     * @param array $params
+     * @return array
+     */
     public function getAll($params = ['*'])
     {
         if ($params === ['*']) {
-            // Récupérer tous les champs
             return $this->_connexion->query("SELECT * FROM $this->table;")->fetchAll(PDO::FETCH_ASSOC);
         } else {
-            // Récupérer certains champs spécifiés
             $fieldList = implode(', ', $params);
             return $this->_connexion->query("SELECT $fieldList FROM $this->table;")->fetchAll(PDO::FETCH_ASSOC);
         }
     }
 
+    /**
+     * Récupère un enregistrement par son identifiant
+     *
+     * @param mixed $id
+     * @param array $params
+     * @return array
+     */
     public function get($id, $params = ['*'])
     {
         if ($params === ['*']) {
-            // Récupérer tous les champs
             return $this->_connexion->query("SELECT * FROM $this->table WHERE id = $id;")->fetch(PDO::FETCH_ASSOC);
         } else {
-            // Récupérer certains champs spécifiés
             $fieldList = implode(', ', $params);
             return $this->_connexion->query("SELECT $fieldList FROM $this->table WHERE id = $id;")->fetch(PDO::FETCH_ASSOC);
         }
     }
 
+    /**
+     * Crée un nouvel enregistrement
+     *
+     * @param array $params
+     * @return array
+     */
     public function create($params)
     {
         $fields = implode(', ', array_keys($params));
@@ -74,6 +94,13 @@ abstract class Model
         return $this->get($this->_connexion->lastInsertId());
     }
 
+    /**
+     * Met à jour un enregistrement
+     *
+     * @param mixed $id
+     * @param array $params
+     * @return array
+     */
     public function update($id, $params)
     {
         $placeholder = [];
@@ -88,6 +115,12 @@ abstract class Model
         return $this->get($this->_connexion->lastInsertId());
     }
 
+    /**
+     * Supprime un enregistrement par son identifiant
+     *
+     * @param mixed $id
+     * @return void
+     */
     public function delete($id)
     {
         $this->_connexion->query("DELETE FROM $this->table WHERE id = $id");

@@ -8,16 +8,24 @@ class Route
     private $matches = [];
     private $params = [];
 
+    /**
+     * Constructeur de la classe Route
+     *
+     * @param string $path
+     * @param mixed $callable
+     */
     public function __construct($path, $callable)
     {
-        $this->path = trim($path, '/'); // On retire les / inutils
+        $this->path = trim($path, '/'); // On retire les / inutiles
         $this->callable = $callable;
     }
 
     /**
-     * Permettra de capturer l'url avec les paramètre
-     * get('/posts/:slug-:id') par exemple
-     **/
+     * Vérifie si l'URL correspond au chemin de la route
+     *
+     * @param string $url
+     * @return bool
+     */
     public function match($url)
     {
         $url = trim($url, '/');
@@ -30,12 +38,26 @@ class Route
         $this->matches = $matches;
         return true;
     }
+
+    /**
+     * Définit une contrainte pour un paramètre de la route
+     *
+     * @param string $param
+     * @param string $regex
+     * @return $this
+     */
     public function with($param, $regex)
     {
         $this->params[$param] = str_replace('(', '(?:', $regex);
-        return $this; // On retourne tjrs l'objet pour enchainer les arguments
+        return $this;
     }
 
+    /**
+     * Fonction de correspondance pour les paramètres de la route
+     *
+     * @param array $match
+     * @return string
+     */
     private function paramMatch($match)
     {
         if (isset($this->params[$match[1]])) {
@@ -44,6 +66,12 @@ class Route
         return '([^/]+)';
     }
 
+    /**
+     * Génère une URL à partir des paramètres donnés
+     *
+     * @param array $params
+     * @return string
+     */
     public function getUrl($params)
     {
         $path = $this->path;
@@ -53,6 +81,11 @@ class Route
         return $path;
     }
 
+    /**
+     * Appelle la fonction/callback associée à la route
+     *
+     * @return mixed
+     */
     public function call()
     {
         if (is_string($this->callable)) {
