@@ -26,28 +26,27 @@ class Games extends Controller
         $date = date("Y-m-d H:i:s");
         if ($date < $tournament['date_start']) {
             http_response_code(403);
-            echo json_encode("Le tournoi n'a pas commencé, vous ne pouvez pas encore saisir les scores, date de debut : " . $tournament['date_start']);
+            echo json_encode("Le tournoi n'a pas commencé, vous ne pouvez pas encore saisir les scores, date de debut : " . $tournament['date_start'], JSON_UNESCAPED_UNICODE);
             return false;
         }
 
         if ($date > $tournament['date_end']) {
             http_response_code(403);
-            echo json_encode("Le tournoi est terminé, vous ne pouvez plus saisir les scores.");
+            echo json_encode("Le tournoi est terminé, vous ne pouvez plus saisir les scores.", JSON_UNESCAPED_UNICODE);
             return false;
         }
 
         //vérifier s'il y a une égalité
         if ($reqBody->score1 == $reqBody->score2) {
-            echo json_encode("Il y a égalité refaite un match afin d'avoir un vainqueur.");
+            echo json_encode("Il y a égalité refaite un match afin d'avoir un vainqueur.", JSON_UNESCAPED_UNICODE);
             return false;
         }
 
         if ($this->model->isDone($match)) {
             http_response_code(403);
-            echo json_encode("Le match à déjà  été validé.");
+            echo json_encode("Le match à déjà  été validé.", JSON_UNESCAPED_UNICODE);
             return false;
         }
-
 
         $obj = [];
         if (USER['id'] == $match['player1']) {
@@ -69,12 +68,12 @@ class Games extends Controller
         $match = $this->model->update($match['id'], $obj);
 
         if (!$this->model->isDone($match)) {
-            //http_response_code(403);
             if (!isset($match['score1_player1']) || !isset($match['score2_player1'])) {
-                echo json_encode("Scores enregistrés, en attente de confirmation de l'adversaire.");
+                $response = "Scores enregistrés, en attente de confirmation de l'adversaire.";
             } else {
-                echo json_encode("Scores enregistrés, non conforme à ceux de l'adversaire. Mettez vous d'accord !");
+                $response = "Scores enregistrés, non conforme à ceux de l'adversaire. Mettez vous d'accord !";
             }
+            echo json_encode($response, JSON_UNESCAPED_UNICODE);
             return false;
         }
 
