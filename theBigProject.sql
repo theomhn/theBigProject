@@ -1,9 +1,9 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost:8889
--- Généré le : ven. 02 juin 2023 à 15:11
+-- Généré le : ven. 23 juin 2023 à 21:08
 -- Version du serveur : 5.7.39
 -- Version de PHP : 8.2.0
 
@@ -26,14 +26,27 @@ USE `thebigproject`;
 -- --------------------------------------------------------
 
 --
--- Structure de la table `scores`
+-- Structure de la table `matchs`
 --
 
-CREATE TABLE `scores` (
+CREATE TABLE `matchs` (
   `id` int(11) NOT NULL,
-  `score_player_1` int(11) NOT NULL,
-  `score_player_2` int(11) NOT NULL
+  `tournament_id` int(11) NOT NULL,
+  `score1_player1` int(11) DEFAULT NULL,
+  `score1_player2` int(11) DEFAULT NULL,
+  `score2_player1` int(11) DEFAULT NULL,
+  `score2_player2` int(11) DEFAULT NULL,
+  `player1` int(11) NOT NULL,
+  `player2` int(11) DEFAULT NULL,
+  `step` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Déchargement des données de la table `matchs`
+--
+
+INSERT INTO `matchs` (`id`, `tournament_id`, `score1_player1`, `score1_player2`, `score2_player1`, `score2_player2`, `player1`, `player2`, `step`) VALUES
+(1, 1, 1, 2, 1, 2, 1, 2, 0);
 
 -- --------------------------------------------------------
 
@@ -83,7 +96,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `pseudo`, `email`, `password`, `salt`, `token`, `active`) VALUES
-(1, 'Theo', 'theo.menchon@hotmail.fr', '$2y$10$9SEWX7dICYqvOXE4DNPCOufzCOdvZuyjXI86UJU1koneSfOMEOg1K', '9015d7022ebe8d9606b05cd28de0727a', 'f6d287ce7e8c8b27b228f313a2f8c19d86039c6d5273b20904567ea1a9e353f4', 1);
+(1, 'Theo', 'theo.menchon@hotmail.fr', '$2y$10$9SEWX7dICYqvOXE4DNPCOufzCOdvZuyjXI86UJU1koneSfOMEOg1K', '9015d7022ebe8d9606b05cd28de0727a', 'f6d287ce7e8c8b27b228f313a2f8c19d86039c6d5273b20904567ea1a9e353f4', 1),
+(2, 'Jean', 'jean@outlook.fr', '$2y$10$01vRrEQUuun0PSZWZqKPS.auiyGp3V0hKSq1K9k9Ll4y6I2NDFBHy', '5d56c4e6dbf7f2e3ebeb9d70ec469788', '99c870c0d911fbb6cf7846101e924ae86d610a5b9c427179d1e61f5330597da8', 1);
 
 -- --------------------------------------------------------
 
@@ -102,17 +116,21 @@ CREATE TABLE `users_tournaments` (
 --
 
 INSERT INTO `users_tournaments` (`id`, `user_id`, `tournament_id`) VALUES
-(2, 1, 1);
+(1, 1, 1),
+(8, 2, 1);
 
 --
 -- Index pour les tables déchargées
 --
 
 --
--- Index pour la table `scores`
+-- Index pour la table `matchs`
 --
-ALTER TABLE `scores`
-  ADD PRIMARY KEY (`id`);
+ALTER TABLE `matchs`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id_tournament` (`tournament_id`),
+  ADD KEY `player1` (`player1`) USING BTREE,
+  ADD KEY `player2` (`player2`) USING BTREE;
 
 --
 -- Index pour la table `tournaments`
@@ -124,23 +142,27 @@ ALTER TABLE `tournaments`
 -- Index pour la table `users`
 --
 ALTER TABLE `users`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `email` (`email`);
 
 --
 -- Index pour la table `users_tournaments`
 --
 ALTER TABLE `users_tournaments`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `user_id_2` (`user_id`,`tournament_id`),
+  ADD KEY `tournament_id` (`tournament_id`) USING BTREE,
+  ADD KEY `user_id` (`user_id`) USING BTREE;
 
 --
 -- AUTO_INCREMENT pour les tables déchargées
 --
 
 --
--- AUTO_INCREMENT pour la table `scores`
+-- AUTO_INCREMENT pour la table `matchs`
 --
-ALTER TABLE `scores`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `matchs`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT pour la table `tournaments`
@@ -152,13 +174,30 @@ ALTER TABLE `tournaments`
 -- AUTO_INCREMENT pour la table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT pour la table `users_tournaments`
 --
 ALTER TABLE `users_tournaments`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- Contraintes pour les tables déchargées
+--
+
+--
+-- Contraintes pour la table `matchs`
+--
+ALTER TABLE `matchs`
+  ADD CONSTRAINT `id_tournament` FOREIGN KEY (`tournament_id`) REFERENCES `tournaments` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Contraintes pour la table `users_tournaments`
+--
+ALTER TABLE `users_tournaments`
+  ADD CONSTRAINT `tournaments_id` FOREIGN KEY (`tournament_id`) REFERENCES `tournaments` (`id`),
+  ADD CONSTRAINT `user_id` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
