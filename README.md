@@ -10,7 +10,7 @@ Assurez-vous que les éléments suivants sont installés sur votre serveur :
 
 - Serveur local permettant d'exécuter du PHP type **([MAMP](https://www.mamp.info/en/downloads/)) ou ([WAMP](https://www.wampserver.com/en/download-wampserver-64bits/))**
 - PHP version 8.2 ou supérieure
-- MySql 5.7.39 / phpMyAdmin  5.2.1
+- MySql 5.7.39 (minimum) / phpMyAdmin  5.2.1
 - [Git installé du votre machine](https://git-scm.com/downloads)
 
 ---
