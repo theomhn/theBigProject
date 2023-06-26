@@ -27,15 +27,24 @@
 </section>
 
 <script>
+    // Fonction asynchrone pour envoyer le formulaire de création de tournoi
     async function sendFormTournament(e) {
-        event.preventDefault();
-        const form = e.target
-        console.log(form);
+        event.preventDefault(); // Empêche le comportement par défaut du formulaire
+        const form = e.target;
+        const formData = new FormData(form); // Crée un nouvel objet FormData à partir du formulaire
+        const body = Object.fromEntries(formData.entries()); // Convertit les données du formulaire en un objet
+
+        // Effectue une requête fetch pour envoyer les données du formulaire
         const response = await fetch(form.getAttribute('action'), {
             method: form.getAttribute('method'),
-            body: new FormData(form)
-        })
-        const data = await response.json()
-        alert('tournoi créé');
+            body: JSON.stringify(body)
+        });
+
+        const data = await response.json(); // Attend la réponse de la requête et la convertit en JSON
+        if (response.ok) {
+            alert('tournoi créé'); // Affiche une alerte pour indiquer que le tournoi a été créé
+            window.location.href = "les-tournois";
+        }
+
     }
 </script>

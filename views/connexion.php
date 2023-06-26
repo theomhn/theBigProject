@@ -45,7 +45,7 @@
                 </div>
                 <div class="input-box">
                     <i class="fas fa-lock"></i>
-                    <input type="password" name="confirm-password" id="confirm-password" placeholder="Confirmer votre mot de passe" required>
+                    <input type="password" name="confirmPassword" id="confirmPassword" placeholder="Confirmer votre mot de passe" required>
                 </div>
                 <input type="submit" class="btn" value="Inscription">
                 <div id="erreurContainer"></div>
@@ -92,52 +92,62 @@
 <script src="public/script/connexion.js"></script>
 
 <script>
+    // Fonction asynchrone pour envoyer le formulaire de connexion
     async function sendFormSignIn(e) {
-        event.preventDefault();
+        event.preventDefault(); // Empêche le comportement par défaut du formulaire
         const form = e.target;
+        const formData = new FormData(form); // Crée un nouvel objet FormData à partir du formulaire
+        const body = Object.fromEntries(formData.entries()); // Convertit les données du formulaire en un objet
+
+        // Effectue une requête fetch pour envoyer les données du formulaire
         const connexion = await fetch(form.getAttribute('action'), {
             method: form.getAttribute('method'),
-            body: new FormData(form)
+            body: JSON.stringify(body)
         })
+
         if (connexion.ok) {
-            window.location.href = 'les-tournois';
+            window.location.href = 'les-tournois'; // Redirige vers les tournois si la connexion est réussie
         }
-        await connexion.json()
+
+        await connexion.json(); // Attend la réponse et la convertit en JSON
     }
 
+    // Fonction asynchrone pour envoyer le formulaire d'inscription
     async function sendFormSignUp(e) {
-        event.preventDefault();
+        event.preventDefault(); // Empêche le comportement par défaut du formulaire
         const form = e.target;
+        const formData = new FormData(form); // Crée un nouvel objet FormData à partir du formulaire
+        const body = Object.fromEntries(formData.entries()); // Convertit les données du formulaire en un objet
 
-
+        // Effectue une requête fetch pour envoyer les données du formulaire
         const inscription = await fetch(form.getAttribute('action'), {
             method: form.getAttribute('method'),
-            body: new FormData(form)
+            body: JSON.stringify(body)
         })
 
-        const password = document.getElementById("password").value;
-        const confirmPassword = document.getElementById("confirm-password").value;
-        const erreurContainer = document.getElementById("erreurContainer");
+        const password = document.getElementById("password").value; // Récupère la valeur du champ de mot de passe
+        const confirmPassword = document.getElementById("confirmPassword").value; // Récupère la valeur du champ de confirmation de mot de passe
+        const erreurContainer = document.getElementById("erreurContainer"); // Récupère l'élément contenant les messages d'erreur
 
-        const paragraph = document.createElement("p");
-        const accountValidation = document.createElement("a");
+        const paragraph = document.createElement("p"); // Crée un nouvel élément de paragraphe
+        const accountValidation = document.createElement("a"); // Crée un nouvel élément d'ancre
 
         if (inscription.ok) {
             if ((password != confirmPassword)) {
-                paragraph.innerHTML = 'Les mots de passe de correspondents pas !';
-                erreurContainer.appendChild(paragraph);
+                paragraph.innerHTML = 'Les mots de passe de correspondents pas !'; // Définit le contenu du paragraphe avec un message d'erreur
+                erreurContainer.appendChild(paragraph); // Ajoute le paragraphe à l'élément contenant les messages d'erreur
             } else {
-                const link = await inscription.json();
+                const link = await inscription.json(); // Attend la réponse de la requête et la convertit en JSON
 
                 erreurContainer.innerHTML = '';
-                accountValidation.href = link;
-                accountValidation.innerHTML = 'Validez votre compte';
-                erreurContainer.appendChild(accountValidation);
+                accountValidation.href = link; // Définit l'URL de l'ancre avec le lien renvoyé par la requête
+                accountValidation.innerHTML = 'Validez votre compte'; // Définit le texte de l'ancre
+                erreurContainer.appendChild(accountValidation); // Ajoute l'ancre à l'élément contenant les messages d'erreur
             }
         } else {
             erreurContainer.innerHTML = '';
-            paragraph.innerHTML = 'Un compte existe déjà avec cette adresse mail.';
-            erreurContainer.appendChild(paragraph);
+            paragraph.innerHTML = 'Un compte existe déjà avec cette adresse mail.'; // Définit le contenu du paragraphe avec un message d'erreur
+            erreurContainer.appendChild(paragraph); // Ajoute le paragraphe à l'élément contenant les messages d'erreur
         }
     }
 </script>

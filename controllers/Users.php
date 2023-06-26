@@ -23,16 +23,17 @@ class Users extends Controller
      */
     public function login()
     {
+        $reqBody = json_decode(file_get_contents("php://input"));
         // Récupère les informations d'identification de l'utilisateur à partir de la requête POST
-        $mail = $_POST['email'];
-        $password = $_POST['passwordLogin'];
+        $mail = $reqBody->email;
+        $password = $reqBody->passwordLogin;
 
         // Vérifie les informations d'identification et récupère l'utilisateur correspondant
         $user = $this->model->getByCredentials($mail, $password);
 
         if ($user) {
             // Définit un cookie d'authentification pour l'utilisateur
-            $seconds = isset($_POST['rememberMe']) ? time() + 60 * 60 * 24 * 365 : 0;
+            $seconds = isset($reqBody->rememberMe) ? time() + 60 * 60 * 24 * 365 : 0;
             setcookie('authentication', $user['token'], $seconds, APP, false, true);
 
             echo json_encode($user['token']);
@@ -76,15 +77,16 @@ class Users extends Controller
 
     public function post()
     {
+        $reqBody = json_decode(file_get_contents("php://input"));
         // Crée un nouvel utilisateur avec les informations fournies dans la requête POST
         $obj = [
-            'pseudo' => $_POST['pseudo'],
-            'email' => $_POST['email'],
-            'password' => $_POST['password']
+            'pseudo' => $reqBody->pseudo,
+            'email' => $reqBody->email,
+            'password' => $reqBody->password
         ];
 
         try {
-            if ($_POST['password'] === $_POST['confirm-password']) {
+            if ($reqBody->password === $reqBody->confirmPassword) {
                 $user = $this->model->create($obj);
                 $link = $this->sendValidationMail($user);
                 echo json_encode($link);

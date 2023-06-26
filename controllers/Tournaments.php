@@ -62,12 +62,7 @@ class Tournaments extends Controller
         ];
 
         $associationModel = $this->loadModel('UserTournament');
-        try {
-            $associationModel->create($obj);
-        } catch (Exception $e) {
-            echo json_encode(true);
-            return true;
-        }
+        $associationModel->create($obj);
 
         // Récupère les jeux de la première étape du tournoi
         $games = $this->model->getGamesPerStep($idTournament, 0);
@@ -78,17 +73,17 @@ class Tournaments extends Controller
         // Charge le modèle du jeu
         $gameModel = $this->loadModel('Game');
 
-        if (!$lastGame || !empty($lastGame['user2_id'])) {
+        if (!$lastGame || !empty($lastGame['player2'])) {
             // Si le dernier jeu est vide ou si le joueur 2 est déjà défini, crée un nouveau jeu avec l'utilisateur courant comme joueur 1
             $obj = [
                 'tournament_id' => $idTournament,
-                'user1_id' => USER['id'],
+                'player1' => USER['id'],
                 'step' => 0
             ];
             $lastGame = $gameModel->create($obj);
         } else {
             // Sinon, fait rejoindre l'utilisateur courant au dernier jeu existant en tant que joueur 2
-            $obj = ['user2_id' => USER['id']];
+            $obj = ['player2' => USER['id']];
             $gameModel->update($lastGame['id'], $obj);
         }
 
@@ -103,13 +98,14 @@ class Tournaments extends Controller
 
     public function post()
     {
+        $reqBody = json_decode(file_get_contents("php://input"));
         // Récupère les données du tournoi à partir de la requête POST
         $obj = [
-            'title' => $_POST['title'],
-            'game' => $_POST['game'],
-            'nbParticipants' => $_POST['nbParticipants'],
-            'date_start' => $_POST['dateStart'],
-            'date_end' => $_POST['dateEnd']
+            'title' => $reqBody->title,
+            'game' => $reqBody->game,
+            'nbParticipants' => $reqBody->nbParticipants,
+            'date_start' => $reqBody->dateStart,
+            'date_end' => $reqBody->dateEnd
         ];
 
         // Crée un nouveau tournoi avec les données fournies

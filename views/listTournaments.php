@@ -6,11 +6,11 @@
     const fetchData = async () => {
         const allTournaments = 'http://localhost/theBigProject/ws/tournaments';
 
+        const tournamentListDiv = document.getElementById('tournamentsList');
+
         try {
             const response = await fetch(allTournaments);
             const tournaments = await response.json();
-
-            const tournamentListDiv = document.getElementById('tournamentsList');
 
             tournaments.forEach(tournament => {
                 const tournamentDiv = document.createElement('div');
@@ -28,11 +28,9 @@
                     </div>
                 `;
                 tournamentListDiv.appendChild(tournamentDiv);
-                /* console.log(tournament); */
             });
         } catch (error) {
             // Gérer les erreurs
-            // ...
         }
     };
     fetchData();
@@ -44,20 +42,19 @@
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({}) // Si j'ai besoin d'envoyer des données supplémentaires, c'est ici
+                body: JSON.stringify({})
             });
 
             if (join.ok) {
                 // Le tournoi a été rejoint avec succès
-                console.log('Vous avez bien rejoint le tournoi : ' + tournamentId);
-                /* alert('Vous avez bien rejoint le tournoi : ' + tournamentId); */
-                // @TODO faire les actions nécessaires après avoir rejoint le tournoi, comme actualiser l'affichage, etc.
+                alert('Vous avez bien rejoint le tournoi : ' + tournamentId);
+                /* window.location.href = `tournois/${tournamentId}`; */
             } else {
                 // Gérez les erreurs éventuelles
-                console.log('Erreur lors de la tentative de rejoindre le tournoi');
+                alert('Erreur lors de la tentative de rejoindre le tournoi');
             }
         } catch (error) {
-            console.log('Erreur lors de la requête', error);
+            alert('Erreur lors de la requête', error);
         }
     }
 
@@ -68,17 +65,17 @@
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({}) // Si j'ai besoin d'envoyer des données supplémentaires, c'est ici
+                body: JSON.stringify({})
             });
 
             if (response.ok) {
                 window.location.href = `tournois/${tournamentId}`;
             } else {
                 // Gérez les erreurs éventuelles
-                console.log('Erreur lors de la tentative de rejoindre le tournoi');
+                alert('Vous ne pouvez pas voir le tournoi sélectionné');
             }
         } catch (error) {
-            console.log('Erreur lors de la requête', error);
+            alert('Erreur lors de la requête');
         }
     }
 </script>
