@@ -1,49 +1,48 @@
-# TheBigProject | Documentation Technique
+# TheBigProject | Documentation Technique - Theo MENCHON
 
-## **Introduction :**
+Projet de fin d'année de Bachelor SUPDEWEB 3 Développement
+
+---
+
+## **Sommaire**
+  - [**Introduction**](#introduction)
+  - [**Architecture du système**](#architecture-du-système)
+  - [**Technologies utilisées**](#technologies-utilisées)
+  - [**Schéma de la base de données**](#schéma-de-la-base-de-données)
+  - [**Diagrammes de classes de l'application**](#diagrammes-de-classes-de-lapplication)
+  - [**Conclusion**](#conclusion)
+
+---
+
+## **Introduction**
 Cette documentation technique décrit les détails techniques du système de création et de gestion des tournois de jeux vidéo. Elle est destinée aux développeurs en charge de la maintenance et de l'amélioration du système.
 
 ---
 
-## **Architecture du système :**
-Le système de système de création et de gestion des tournois de jeux vidéo est une application web développée en utilisant principalement le language **PHP 8.2**. Le système utilise une base de données **MySql 5.7.39 (minimum)** pour stocker les informations sur utilisateurs, les tournois et les matchs. Le front-end est développé en Angular.
+## **Architecture du système**
+Le système de création et de gestion des tournois de jeux vidéo est une application web développée en architecture MVC **(Models, Views, Controllers)** avec en plus un dossier **app** contenant le contrôleur et le modèle générique ainsi que le système de routing qui remplace le fonctionnement par défaut de l’architecture fichier des serveurs web. J'ai aussi créé un dossier **public** contenant toutes les ressources qui doivent être accessible.
 
 ---
 
-## **Composants du système :**
-Le système de gestion des commandes en ligne est composé des éléments suivants :
-
-### **Serveur d'application :**
-
-Le serveur d'application est responsable de la gestion de la logique métier de l'application et de la communication avec la base de données. Il est développé en utilisant le framework Spring et est hébergé sur un serveur Tomcat.
-
-1. Base de données : La base de données MySQL stocke toutes les informations relatives aux commandes, aux clients et aux produits.
-
-2. Front-end : Le front-end de l'application est développé en Angular. Il est responsable de la présentation de l'interface utilisateur et de l'interaction avec le serveur d'application.
-
-3. API REST : Le serveur d'application expose une API REST pour communiquer avec le front-end.
-
----
-
-## **Technologies utilisées :**
-Les technologies utilisées pour développer TheBigProject sont les suivantes :
-
-PHP : Le langage de programmation utilisé pour développer le serveur d'application.
-
-JavaScript : Pour les requêtes AJAX et les animations pour le front-end.
-
-SCSS / CSS : Pour tout le style de l'application.
-
-MySQL : La base de données utilisée pour stocker les informations sur les utilisateurs, les tournois et les matchs.
-
-REST : Le style architectural utilisé pour l'API entre le front-end et le serveur d'application.
+## **Technologies utilisées** 
+  
+Les languages / technologies utilisé(e)s pour le développement :
+- **Serveur local** : (MAMP ou WAMP)
+- **Back-end** : PHP 8.2 ou plus
+- **API REST** : PHP 8.2 ou plus
+- **Base de données** : MySql 5.7.39 / phpMyAdmin  5.2.1
+- **Front-end** : 
+  - HTML5
+  - Le préprocesseur SCSS pour générer du CSS
+  - VanillaJS pour les animations et les requêtes AJAX
 
 ---
 
-## **Schéma de la base de données :**
+## **Schéma de la base de données**
+
 Le schéma de la base de données décrit la structure de la base de données MySQL utilisée par le système de création des utilisateurs et la gestions des tournois et matchs
 
-![Schéma de la base de données](./sch%C3%A9ma%20bdd.png)
+![Schéma de la base de données](./schemaBdd.jpg)
 
 ---
 
@@ -51,17 +50,17 @@ Le schéma de la base de données décrit la structure de la base de données My
 
 - Diagrammes de classes des modèles :
 
-    ![Diagramme de classes des contrôleurs](./Models.png)
+![Diagramme de classes des modèles](./Models.jpg)
 
 - Diagrammes de classes des contrôleurs :
 
-    ![Diagramme de classes des contrôleurs](./Controllers.png)
-
+![Diagramme de classes des contrôleurs](./Controllers.jpg)
 
 - Diagrammes de classes du système de routing :
 
-    ![Diagramme de classes du système de routing](./Router.png)
+![Diagramme de classes du système de routing](./Router.jpg)
+
 ---
 
-## **Conclusion :**
-Cette documentation technique fournit les détails techniques nécessaires pour comprendre et maintenir le système de gestion des commandes en ligne. Elle décrit l'architecture du système, les technologies utilisées, les composants du système et le schéma de la base de données.
+## **Conclusion**
+Cette documentation technique fournit les détails techniques nécessaires pour comprendre et maintenir l’application. Elle décrit l'architecture du système, les technologies utilisées,  le schéma de la base de données et les diagrammes de classes des contrôleurs, modèles et du système de routing.

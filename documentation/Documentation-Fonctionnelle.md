@@ -1,16 +1,30 @@
-# TheBigProject | Documentation fonctionnelle
+# TheBigProject | Documentation Fonctionnelle  - Theo MENCHON
 
 Projet de fin d'année de Bachelor SUPDEWEB 3 Développement
 
 ---
 
-## **Introduction :**
-Découvrez l'application TheBigProject dédié à la création de tournois de jeux vidéo ! Organisez et participez à des compétitions palpitantes dans une multitude de jeux. L'interface conviviale vous permet de créer des tournois personnalisés et d'inviter des joueurs. Suivez les résultats en temps réel, consultez les classements et interagissez avec une communauté passionnée. Rejoignez-nous dès maintenant pour vivre l'excitation des tournois de jeux vidéo !
+## **Sommaire**
+  - [Introduction](#introduction)
+  - [Objectifs / Difficultés rencontrées](#objectifs--difficultés-rencontrées)
+  - [Fonctionnalités](#fonctionnalités)
+  - [Technologies utilisées](#technologies-utilisées)
+  - [Motivation des choix technologiques](#motivation-des-choix-technologiques)
+  - [Les Routes](#les-routes)
+  - [Diagramme de cas d'utilisation](#diagramme-de-cas-dutilisation)
+  - [Conclusion](#conclusion)
 
 ---
 
-## **Objectifs / Difficultés rencontrées :**
-En tant que développeur de cette application, mon objectif était de créer une plateforme complète pour les tournois de jeux vidéo. Malheureusement, en raison de contraintes technique par exemple l'envoie de mail en local depuis MACOS et de certaines fonctionnalités qui m'ont demandé plus de temps que prévu ou certaines fonctionnalités que j'ai jugé plus importante, quelques caractéristiques n'ont pas pu être intégrées. Cependant, je suis fier de ce que j'ai pu développer :
+## **Introduction**
+
+Découvrez l'application TheBigProject dédiée à la création de tournois de jeux vidéo ! Organisez et participez à des compétitions palpitantes dans une multitude de jeux. L'interface conviviale vous permet de créer des tournois personnalisés et d'inviter des joueurs. Suivez les résultats en temps réel, consultez les classements et interagissez avec une communauté passionnée. Rejoignez-nous dès maintenant pour vivre l'excitation des tournois de jeux vidéo !
+
+---
+
+## **Objectifs / Difficultés rencontrées**
+
+En tant que développeur de cette application, mon objectif était de créer une plateforme complète pour les tournois de jeux vidéo. Malheureusement, en raison de contraintes technique comme par exemple l'envoie de mail en local depuis MACOS est bloqué et de certaines fonctionnalités qui m'ont demandé plus de temps que prévu ou certaines fonctionnalités que j'ai jugé plus importante, quelques caractéristiques n'ont pas pu être intégrées. Cependant, je suis fier de ce que j'ai pu développer :
 
 Tout d'abord, j'ai créé une page publique respectant les bonnes pratiques SEO afin d'assurer une visibilité l'application. Ensuite, j'ai mis en place un système sécurisé de création de compte et de connexion pour les utilisateurs, garantissant ainsi la confidentialité de leurs données.
 
@@ -26,7 +40,7 @@ Malgré ces limitations, j'espère que les fonctionnalités existantes offriront
 
 ---
 
-## **Fonctionnalités :**
+## **Fonctionnalités**
 
 - Une page publique respectant les bonnes pratiques SEO
 - La création de compte sécurisé et connexion des utilisateurs
@@ -35,17 +49,21 @@ Malgré ces limitations, j'espère que les fonctionnalités existantes offriront
 - Génération du tableau de compétitions
 - Déclaration des résultats des parties dans l'applications par les joueurs
 - Clôture de l'événement avec reporting aux participants
+
 ---
 
-## **Technologies utilisées :** 
+## **Technologies utilisées** 
   
-Les languages / technologies utilisé(e)s pour le développer :
+Les languages / technologies utilisé(e)s pour le développement :
 - **Serveur local** : (MAMP ou WAMP)
-- **Back-end** : PHP 8.2 / JavaScript pour les requêtes AJAX
+- **Back-end** : PHP 8.2 ou plus
+- **API REST** : PHP 8.2 ou plus
 - **Base de données** : MySql 5.7.39 / phpMyAdmin  5.2.1
-- **Front-end** : HTML5 / SCSS / VanillaJS
+- **Front-end** : HTML5 / SCSS / VanillaJS et les requêtes AJAX
 
-## **Motivation des choix technologiques :**
+---
+
+## **Motivation des choix technologiques**
 
 J'ai pris la décision d'utiliser ces technologies pour renforcer mes compétences fondamentales en langages de programmation (PHP et JavaScript) avant de me lancer dans l'apprentissage de divers frameworks. En outre, ces technologies sont également utilisées dans mon travail actuel, ce qui me permet d'approfondir mes connaissances et de bénéficier plus facilement de l'aide de mes collègues développeurs.
 
@@ -57,9 +75,9 @@ En somme, le choix de ces technologies a été motivé par ma volonté de renfor
 
 ---
 
-## Les Routes
+## **Les Routes**
 
-**Routes de l'application :**
+**Routes de l'application**
 
 - **GET / :** Renvoie la page d'accueil de l'application.
 - **GET /connexion :** Affiche la page de connexion pour les utilisateurs.
@@ -70,7 +88,7 @@ Si un utilisateur est connecté :
 - **GET /les-tournois :** Renvoie la liste de tous les tournois disponibles.
 - **GET /tournois/:id :** Affiche la page du tournoi spécifié par son identifiant.
 
-**API :**
+**Les routes de l'API :**
 
 - **POST /ws/login :** Gère la connexion des utilisateurs via l'API.
 - **POST /ws/users :** Permet l'ajout d'un nouvel utilisateur via l'API.
@@ -95,14 +113,14 @@ Si un utilisateur est connecté :
 Ces routes permettent à mon application de gérer les fonctionnalités principales, telles que la navigation, l'authentification, la création de tournois, l'inscription des participants, la gestion des utilisateurs et la manipulation des scores des jeux. Utilisez ces routes comme référence pour comprendre comment l'application fonctionne et pour interagir avec l'API.
 
 ---
-## **Diagramme de cas d'utilisation :**
+## **Diagramme de cas d'utilisation**
 Voici le diagramme de cas d'utilisation qui j'ai imaginé pour le projet.
 
 ![Diagramme de cas d'utilisation](./usecase-diagram.jpeg)
 
 ---
 
-## **Conclusion :**
+## **Conclusion**
 En conclusion, ce projet de création d'un site dédié aux tournois de jeux vidéo a été une expérience passionnante et formatrice. Malgré les défis techniques et les contraintes de temps, j'ai pu développer des fonctionnalités clés telles qu'une page publique optimisée pour le référencement, un système de création de compte sécurisé que je n'avais jamais fait auparavant, la gestion des tournois et la déclaration des résultats des parties.
 
 Ce projet m'a permis d'approfondir mes compétences en langages fondamentaux et de renforcer mes bases en programmation. En utilisant des technologies que je maîtrisais déjà, j'ai pu gagner en productivité et en confiance dans le développement de l'application. De plus, l'intégration de ces technologies dans mon travail professionnel m'a offert la possibilité de bénéficier de l'aide et des conseils précieux de mes collègues développeurs.
