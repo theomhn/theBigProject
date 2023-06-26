@@ -1,4 +1,4 @@
-# TheBigProject | Documentation d'installation de l'application
+# TheBigProject | Documentation d'installation de l'application  - Theo MENCHON
 
 Cette documentation vous guide à travers le processus d'installation de l'application theBigProject sur un serveur local.
 
