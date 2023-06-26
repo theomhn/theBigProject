@@ -24,13 +24,13 @@ Découvrez l'application TheBigProject dédiée à la création de tournois de j
 
 ## **Objectifs / Difficultés rencontrées**
 
-En tant que développeur de cette application, mon objectif était de créer une plateforme complète pour les tournois de jeux vidéo. Malheureusement, en raison de contraintes technique comme par exemple l'envoie de mail en local depuis MACOS est bloqué et de certaines fonctionnalités qui m'ont demandé plus de temps que prévu ou certaines fonctionnalités que j'ai jugé plus importante, quelques caractéristiques n'ont pas pu être intégrées. Cependant, je suis fier de ce que j'ai pu développer :
+En tant que développeur de cette application, mon objectif était de créer une plateforme complète pour les tournois de jeux vidéo. Malheureusement, en raison de contraintes technique comme par exemple, l'envoi de mail en local depuis MACOS est bloqué et de certaines fonctionnalités qui m'ont demandé plus de temps que prévu ou certaines fonctionnalités que j'ai jugé plus importante, quelques caractéristiques n'ont pas pu être intégrées. Cependant, je suis fier de ce que j'ai pu développer :
 
 Tout d'abord, j'ai créé une page publique respectant les bonnes pratiques SEO afin d'assurer une visibilité l'application. Ensuite, j'ai mis en place un système sécurisé de création de compte et de connexion pour les utilisateurs, garantissant ainsi la confidentialité de leurs données.
 
-Une fonctionnalité essentielle que j'ai réussi à développer est la création de tournois. Les utilisateurs peuvent facilement organiser des compétitions dans différents jeux et personnaliser les paramètres selon leurs préférences (Nombre de joueurs maximum, jeu, et date de dérouler du tournoi).
+Une fonctionnalité essentielle que j'ai réussi à développer est la création de tournois. Les utilisateurs peuvent facilement organiser des compétitions dans différents jeux et personnaliser les paramètres selon leurs préférences (nombre de joueurs maximum, jeu, et date de dérouler du tournoi).
 
-De plus, j'ai intégré la possibilité pour les joueurs de déclarer les résultats des parties directement dans la visualisation des tournois, permettant ainsi un suivi en temps réel des performances et des classements. J'aurais aimé mettre en place le bracket du tournoi afin que les utilisateurs puissent visualisation les différentes étapes mais j'ai préféré faire tout l'aspect logique du tournoi.
+De plus, j'ai intégré la possibilité pour les joueurs de déclarer les résultats des parties directement dans la visualisation des tournois, permettant ainsi un suivi en temps réel des performances et des classements. J'aurais aimé mettre en place le bracket du tournoi afin que les utilisateurs puissent visualisation les différentes étapes, mais j'ai préféré faire tout l'aspect logique du tournoi.
 
 Enfin, j'ai développé la fonction de génération du tableau de compétitions, facilitant ainsi la visualisation des matchs à venir et des prochaines étapes du tournoi.
 

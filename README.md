@@ -61,6 +61,17 @@ Extrayez les fichiers zippés préalablement téléchargé dans le dossier cité
 
 ---
 
+## **Étape 2 Bis: Créez l'utilisateur ci-dessous dans phpMyAdmin**
+
+Chemin d'accès à la page : **Page d’accueil** puis **comptes utilisateurs**
+
+créez le avec les informations ci-dessous:
+- Nom d'hôte : localhost
+- Nom d'utilisateur : TBP-admin
+- Mot de passe : (@_NUCJyJyuG/T!R
+- Privilèges globaux : cochez tout
+---
+
 ## **Étape 3 : Utiliser l'application**
 
 Rendez dans un nouvel onglet de votre navigateur pour tester l'application et saisissez : 
@@ -71,7 +82,7 @@ localhost/theBigProject/
 ```
 
 **Pour Mac**
-- Si vous utilisez le port par défaut de MAMP (8888) changer la configuration afin que le projet soit accessible à cette adresse : 
+- Si vous utilisez le port par défaut de MAMP (8888) changer la configuration afin que le projet soit accessible à cette adresse
 ```
 http://localhost/theBigProject/
 ```
@@ -80,4 +91,13 @@ Le port 80 qui est le standard HTTP et rend le projet compatible avec MACOS et W
 ```
 http://localhost:8888/theBigProject/
 ```
+
+## **Étape 4 : Connexion / Inscription**
+Pour tester l'application, vous devez être inscrit.
+
+- Si vous ne l'avez pas déjà fait, inscrivez-vous, validé votre compte puis connecté vous.
+
+- Sinon un compte de test est déjà créé.
+
+  - Les identifiant : admin@compte-test.test mot de passe : test
     

@@ -12,6 +12,7 @@ Projet de fin d'année de Bachelor SUPDEWEB 3 Développement
   - [**Diagrammes de classes de l'application**](#diagrammes-de-classes-de-lapplication)
   - [**Conclusion**](#conclusion)
 
+
 ---
 
 ## **Introduction**
@@ -20,7 +21,7 @@ Cette documentation technique décrit les détails techniques du système de cr�
 ---
 
 ## **Architecture du système**
-Le système de création et de gestion des tournois de jeux vidéo est une application web développée en architecture MVC **(Models, Views, Controllers)** avec en plus un dossier **app** contenant le contrôleur et le modèle générique ainsi que le système de routing qui remplace le fonctionnement par défaut de l’architecture fichier des serveurs web. J'ai aussi créé un dossier **public** contenant toutes les ressources qui doivent être accessible.
+Le système de création et de gestion des tournois de jeux vidéo est une application web développé en architecture MVC **(Models, Views, Controllers)** avec en plus un dossier **app** contenant le contrôleur et le modèle générique ainsi que le système de routing qui remplace le fonctionnement par défaut de l’architecture fichier des serveurs web. J'ai aussi créé un dossier **public** contenant toutes les ressources qui doivent être accessibles.
 
 ---
 
@@ -40,7 +41,7 @@ Les languages / technologies utilisé(e)s pour le développement :
 
 ## **Schéma de la base de données**
 
-Le schéma de la base de données décrit la structure de la base de données MySQL utilisée par le système de création des utilisateurs et la gestions des tournois et matchs
+Le schéma de la base de données décrit la structure de la base de données MySQL utilisée par le système de création des utilisateurs et la gestion des tournois et matchs
 
 ![Schéma de la base de données](./schemaBdd.jpg)
 
