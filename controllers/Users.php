@@ -25,7 +25,7 @@ class Users extends Controller
     {
         // Récupère les informations d'identification de l'utilisateur à partir de la requête POST
         $mail = $_POST['email'];
-        $password = $_POST['password'];
+        $password = $_POST['passwordLogin'];
 
         // Vérifie les informations d'identification et récupère l'utilisateur correspondant
         $user = $this->model->getByCredentials($mail, $password);
@@ -84,9 +84,13 @@ class Users extends Controller
         ];
 
         try {
-            $user = $this->model->create($obj);
-            $link = $this->sendValidationMail($user);
-            echo json_encode($link);
+            if ($_POST['password'] === $_POST['confirm-password']) {
+                $user = $this->model->create($obj);
+                $link = $this->sendValidationMail($user);
+                echo json_encode($link);
+            } else {
+                echo json_encode("Les mots de passe ne correspondent pas !");
+            }
         } catch (Exception $ex) {
             // Une exception s'est produite lors de la création de l'utilisateur, renvoie une réponse d'erreur
             http_response_code(400);

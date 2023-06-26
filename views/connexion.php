@@ -9,7 +9,7 @@
                 </div>
                 <div class="input-box">
                     <i class="fas fa-lock"></i>
-                    <input type="password" name="password" id="password" placeholder="Votre mot de passe" required>
+                    <input type="password" name="passwordLogin" id="passwordLogin" placeholder="Votre mot de passe" required>
                 </div>
                 <div class="checkbox-box">
                     <input type="checkbox" name="rememberMe" id="rememberMe">
@@ -48,7 +48,7 @@
                     <input type="password" name="confirm-password" id="confirm-password" placeholder="Confirmer votre mot de passe" required>
                 </div>
                 <input type="submit" class="btn" value="Inscription">
-                <a href="" id="accountValidation"></a>
+                <div id="erreurContainer"></div>
 
                 <p class="social-text">Retrouvez moi sur :</p>
                 <div class="social-media">
@@ -102,28 +102,42 @@
         if (connexion.ok) {
             window.location.href = 'les-tournois';
         }
-        const data = await connexion.json()
-        console.log(data);
+        await connexion.json()
     }
 
     async function sendFormSignUp(e) {
         event.preventDefault();
         const form = e.target;
+
+
         const inscription = await fetch(form.getAttribute('action'), {
             method: form.getAttribute('method'),
             body: new FormData(form)
         })
-        const accountValidation = document.getElementById("accountValidation");
+
+        const password = document.getElementById("password").value;
+        const confirmPassword = document.getElementById("confirm-password").value;
+        const erreurContainer = document.getElementById("erreurContainer");
+
+        const paragraph = document.createElement("p");
+        const accountValidation = document.createElement("a");
 
         if (inscription.ok) {
-            const link = await inscription.json();
+            if ((password != confirmPassword)) {
+                paragraph.innerHTML = 'Les mots de passe de correspondents pas !';
+                erreurContainer.appendChild(paragraph);
+            } else {
+                const link = await inscription.json();
 
-            accountValidation.setAttribute('href', link);
-            accountValidation.innerHTML = 'Validez votre compte';
+                erreurContainer.innerHTML = '';
+                accountValidation.href = link;
+                accountValidation.innerHTML = 'Validez votre compte';
+                erreurContainer.appendChild(accountValidation);
+            }
         } else {
-            accountValidation.style.color = "black"
-            accountValidation.setAttribute('href', 'connexion');
-            accountValidation.innerHTML = 'Un compte existe déjà avec cette adresse mail.';
+            erreurContainer.innerHTML = '';
+            paragraph.innerHTML = 'Un compte existe déjà avec cette adresse mail.';
+            erreurContainer.appendChild(paragraph);
         }
     }
 </script>
