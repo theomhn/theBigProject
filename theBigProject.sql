@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost:8889
--- Généré le : ven. 23 juin 2023 à 21:08
+-- Généré le : lun. 26 juin 2023 à 20:14
 -- Version du serveur : 5.7.39
 -- Version de PHP : 8.2.0
 
@@ -41,13 +41,6 @@ CREATE TABLE `matchs` (
   `step` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Déchargement des données de la table `matchs`
---
-
-INSERT INTO `matchs` (`id`, `tournament_id`, `score1_player1`, `score1_player2`, `score2_player1`, `score2_player2`, `player1`, `player2`, `step`) VALUES
-(1, 1, 1, 2, 1, 2, 1, 2, 0);
-
 -- --------------------------------------------------------
 
 --
@@ -68,12 +61,7 @@ CREATE TABLE `tournaments` (
 --
 
 INSERT INTO `tournaments` (`id`, `title`, `game`, `nbParticipants`, `date_start`, `date_end`) VALUES
-(1, 'Tournoi 1vs1 Juin', 'Rocket League', 16, '2023-06-01 00:00:00', '2023-06-30 23:59:00'),
-(2, 'Tournoi 1vs1 Juillet', 'Rocket League', 16, '2023-07-01 00:00:00', '2023-07-31 23:59:00'),
-(3, 'Tournoi 1vs1 Aout', 'Rocket League', 16, '2023-08-01 00:00:00', '2023-08-31 23:59:00'),
-(4, 'Tournoi 1vs1 Septembre', 'Rocket League', 16, '2023-09-01 00:00:00', '2023-09-30 23:59:00'),
-(5, 'Tournoi 1vs1 Octobre', 'Rocket League', 16, '2023-10-01 00:00:00', '2023-10-31 23:59:00'),
-(6, 'Tournoi 1vs1 Novembre', 'Rocket League', 16, '2023-11-01 00:00:00', '2023-11-30 23:59:00');
+(1, 'Tournoi 1vs1 Juin', 'Rocket League', 16, '2023-06-01 00:00:00', '2023-06-30 23:59:00');
 
 -- --------------------------------------------------------
 
@@ -96,8 +84,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `pseudo`, `email`, `password`, `salt`, `token`, `active`) VALUES
-(1, 'Theo', 'theo.menchon@hotmail.fr', '$2y$10$9SEWX7dICYqvOXE4DNPCOufzCOdvZuyjXI86UJU1koneSfOMEOg1K', '9015d7022ebe8d9606b05cd28de0727a', 'f6d287ce7e8c8b27b228f313a2f8c19d86039c6d5273b20904567ea1a9e353f4', 1),
-(2, 'Jean', 'jean@outlook.fr', '$2y$10$01vRrEQUuun0PSZWZqKPS.auiyGp3V0hKSq1K9k9Ll4y6I2NDFBHy', '5d56c4e6dbf7f2e3ebeb9d70ec469788', '99c870c0d911fbb6cf7846101e924ae86d610a5b9c427179d1e61f5330597da8', 1);
+(1, 'Admin', 'admin@compte-test.test', '$2y$10$gQJkmS/5g6zM1mFcVGM2n.2lIHqxOwzOPVNHCEhBQiuiAEt3CQrTu', '350de2f8708ff349470510f3956aa8ae', '8dd3fd846b027e8c4b2982b2b4785fda98b83b5edf4019724147ebdc50856dbf', 1);
 
 -- --------------------------------------------------------
 
@@ -110,14 +97,6 @@ CREATE TABLE `users_tournaments` (
   `user_id` int(11) NOT NULL,
   `tournament_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Déchargement des données de la table `users_tournaments`
---
-
-INSERT INTO `users_tournaments` (`id`, `user_id`, `tournament_id`) VALUES
-(1, 1, 1),
-(8, 2, 1);
 
 --
 -- Index pour les tables déchargées
@@ -162,25 +141,25 @@ ALTER TABLE `users_tournaments`
 -- AUTO_INCREMENT pour la table `matchs`
 --
 ALTER TABLE `matchs`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT pour la table `tournaments`
 --
 ALTER TABLE `tournaments`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT pour la table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT pour la table `users_tournaments`
 --
 ALTER TABLE `users_tournaments`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- Contraintes pour les tables déchargées
