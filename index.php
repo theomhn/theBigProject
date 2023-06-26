@@ -54,9 +54,17 @@ if (USER !== false) {
 
 try {
     $router->run();
-} catch (Exception $ex) {
+} catch (RouterException $ex) {
     // Si aucune route n'est trouvée, redirection vers une erreur 404
     require_once ROOT . 'controllers/Bases.php';
     $controller = new Bases();
     $controller->get404();
+} catch (Exception $ex) {
+    http_response_code(500);
+    echo "Erreur serveur, veuillez réessayer.<br>";
+    echo "Si le problème persiste, informez un webmaster du détail suivant.";
+    echo "<details>";
+    echo "<summary>Détails</summary>";
+    echo($ex->getMessage());
+    echo "</details>";
 }
