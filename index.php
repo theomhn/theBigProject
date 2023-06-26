@@ -1,9 +1,11 @@
 <?php
 
-// On génère une constante contenant le chemin vers la racine publique du projet
-// Plus propre que l'autre méthode
+// La constante ROOT représente le chemin absolu du répertoire racine de l'application
 define('ROOT', str_replace('index.php', '', $_SERVER['SCRIPT_FILENAME']));
+
+// La constante APP représente le chemin relatif du répertoire de l'application
 define('APP', '/' . basename(__DIR__));
+
 
 require_once ROOT . 'app/Router.php';
 require_once ROOT . 'app/Controller.php';
@@ -19,6 +21,8 @@ $router->get('/', "Bases#getHome");
 $router->get('/connexion', "Bases#getConnexion");
 $router->get('/activate', "Users#activate");
 
+
+//Si l'utilisateur est connecté
 if (USER !== false) {
     $router->get('/tournois', "Bases#getTournamentHome");
     $router->get('/les-tournois', "Bases#getAllTournaments");
@@ -29,6 +33,7 @@ if (USER !== false) {
 $router->post('/ws/login', "Users#login");
 $router->post('/ws/users', "Users#post");
 
+//Si l'utilisateur est connecté
 if (USER !== false) {
 
     /* Users */
