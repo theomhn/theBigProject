@@ -4,7 +4,7 @@
 </section>
 <script>
     const fetchData = async () => {
-        const allTournaments = 'http://localhost/theBigProject/ws/tournaments';
+        const allTournaments = 'ws/tournaments';
 
         const tournamentListDiv = document.getElementById('tournamentsList');
 
