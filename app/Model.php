@@ -4,8 +4,8 @@ abstract class Model
 {
     // Informations de la base de données
     private $host = "localhost";
-    private $db_name = "TheBigProject";
-    private $username = "TBP-admin";
+    private $db_name = "meth0897_thebigproject";
+    private $username = "meth0897_TBP-admin";
     private $password = "(@_NUCJyJyuG/T!R";
 
     // Propriété qui contiendra l'instance de la connexion
