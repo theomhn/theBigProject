@@ -18,10 +18,10 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de données : `thebigproject`
+-- Base de données : `meth0897_thebigproject`
 --
-CREATE DATABASE IF NOT EXISTS `thebigproject` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
-USE `thebigproject`;
+CREATE DATABASE IF NOT EXISTS `meth0897_thebigproject` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+USE `meth0897_thebigproject`;
 
 -- --------------------------------------------------------
 
