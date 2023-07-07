@@ -2,7 +2,7 @@
 <html lang="fr">
 
 <head>
-    <base href="<?= APP ?>/" />
+    <base href="<?= APP; ?>">
     <!-- Required meta tags -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">

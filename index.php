@@ -4,8 +4,10 @@
 define('ROOT', str_replace('index.php', '', $_SERVER['SCRIPT_FILENAME']));
 
 // La constante APP représente le chemin relatif du répertoire de l'application
-define('APP', '/' . basename(__DIR__));
+define('APP', '/' . basename(__DIR__) . '/');
 
+// La constante CONFIG représente les variables globales de l'application
+define('CONFIG', include ROOT . '/App/config.php');
 
 require_once ROOT . 'app/Router.php';
 require_once ROOT . 'app/Controller.php';
@@ -65,6 +67,6 @@ try {
     echo "Si le problème persiste, informez un webmaster du détail suivant.";
     echo "<details>";
     echo "<summary>Détails</summary>";
-    echo($ex->getMessage());
+    echo ($ex->getMessage());
     echo "</details>";
 }

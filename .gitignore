@@ -1,4 +1,4 @@
 .DS_Store
 vendor/
-inc/config.php
+app/config.php
 node_modules/

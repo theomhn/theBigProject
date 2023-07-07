@@ -3,10 +3,10 @@
 abstract class Model
 {
     // Informations de la base de données
-    private $host = "localhost";
-    private $db_name = "meth0897_thebigproject";
-    private $username = "meth0897_TBP-admin";
-    private $password = "(@_NUCJyJyuG/T!R";
+    private $host = CONFIG['dbHost'];
+    private $db_name = CONFIG['dbName'];
+    private $username = CONFIG['dbUsername'];
+    private $password = CONFIG['dbPassword'];
 
     // Propriété qui contiendra l'instance de la connexion
     protected $_connexion;
