@@ -22,7 +22,8 @@
   --main-color: #f39c12;
   --hover: #df9011;
   --hover-light: #e6e6e6;
-  --red: red;
+  --green: #3dc763;
+  --red: #ed3d3d;
   --black: #222;
   --white: #fff;
   --light-color: #777;
@@ -78,6 +79,12 @@ section {
   border: 2px solid var(--white);
   font-weight: 600;
   font-size: 0.8rem;
+}
+.btn.valid {
+  background-color: var(--green);
+}
+.btn.invalid {
+  background-color: var(--red);
 }
 
 .section-heading {
