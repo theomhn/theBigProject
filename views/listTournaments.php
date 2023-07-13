@@ -45,16 +45,16 @@
                 body: JSON.stringify({})
             });
 
+            // Le tournoi a été rejoint avec succès
             if (join.ok) {
-                // Le tournoi a été rejoint avec succès
-                alert('Vous avez bien rejoint le tournoi : ' + tournamentId);
+                notyf.success('Vous avez bien rejoint le tournoi : ' + tournamentId);
                 /* window.location.href = `tournois/${tournamentId}`; */
             } else {
                 // Gérez les erreurs éventuelles
-                alert('Erreur lors de la tentative de rejoindre le tournoi');
+                notyf.error('Erreur lors de la tentative de rejoindre le tournoi');
             }
         } catch (error) {
-            alert('Erreur lors de la requête', error);
+            notyf.error('Erreur lors de la requête', error);
         }
     }
 
@@ -72,10 +72,10 @@
                 window.location.href = `tournois/${tournamentId}`;
             } else {
                 // Gérez les erreurs éventuelles
-                alert('Vous ne pouvez pas voir le tournoi sélectionné');
+                notyf.error('Vous ne pouvez pas voir le tournoi sélectionné');
             }
         } catch (error) {
-            alert('Erreur lors de la requête');
+            notyf.error('Erreur lors de la requête');
         }
     }
 </script>

@@ -25,6 +25,9 @@
     <meta name="msapplication-TileColor" content="#da532c">
     <meta name="theme-color" content="#ffffff">
 
+    <!-- Notif JS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.css">
+
     <!-- Liens CSS -->
     <link rel="stylesheet" href="public/css/base.css">
     <link rel="stylesheet" href="public/css/menu.css">
@@ -108,9 +111,20 @@
     <script src="public/script/responsiveMenu.js"></script>
     <!-- FontAwesome -->
     <script src="https://kit.fontawesome.com/263a91419d.js" crossorigin="anonymous"></script>
-    <!-- Jquery -->
-    <script src="https://code.jquery.com/jquery-3.6.0.slim.js"></script>
+    <!-- Notif JS -->
+    <script src="node_modules/notyf/notyf.min.js"></script>
+
     <script>
+        // Notifications de l'application
+        const notyf = new Notyf({
+            duration: 3000,
+            position: {
+                x: 'right',
+                y: 'top',
+            },
+            dismissible: true
+        })
+        // Fonction de déconnexion
         async function logout() {
             const response = await fetch('ws/logout');
         }
