@@ -46,4 +46,11 @@ class Tournament extends Model
 
         return $games;
     }
+
+    public function leave($idTournament)
+    {
+        $games = $this->_connexion->query("DELETE FROM users_tournaments WHERE tournament_id = $idTournament;");
+
+        return $games;
+    }
 }

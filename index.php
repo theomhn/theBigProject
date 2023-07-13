@@ -41,7 +41,7 @@ if (USER !== false) {
     /* Users */
     $router->post("/ws/users", "Users#post");
     $router->get('/ws/logout', "Users#logout");
-    
+
     /* Tournaments */
     $router->get("/ws/tournaments", "Tournaments#getAll");
     $router->get("/ws/tournaments/:id", "Tournaments#get");
@@ -49,6 +49,7 @@ if (USER !== false) {
     $router->get('/ws/tournaments/users/:id', "Tournaments#getByPlayers");
     $router->post("/ws/tournaments/", "Tournaments#post");
     $router->post("/ws/tournaments/:id/join", "Tournaments#join");
+    $router->delete("/ws/tournaments/:id/leave", "Tournaments#leave");
 
     /* Games */
     $router->get("/ws/games/:id", "Games#get");

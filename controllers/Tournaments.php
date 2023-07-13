@@ -95,10 +95,17 @@ class Tournaments extends Controller
         // Récupère les participants du tournoi à partir de l'ID fourni
         echo json_encode($this->model->getParticipants($id));
     }
+
     public function getByPlayers($idUser)
     {
         // Récupère les tournois auxquels participe un joueur
         echo json_encode($this->model->getByPlayers($idUser));
+    }
+
+    public function leave($idTournament)
+    {
+        // Quitte un tournoi
+        echo json_encode($this->model->leave($idTournament));
     }
 
     public function post()
