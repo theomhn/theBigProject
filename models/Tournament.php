@@ -21,6 +21,19 @@ class Tournament extends Model
         return $participants;
     }
 
+    public function getByPlayers($idUser)
+    {
+        // // Récupère les tournois auxquels participe un joueur
+        $tournaments = $this->_connexion->query("SELECT tournament_id FROM users_tournaments WHERE user_id = $idUser")->fetchAll(PDO::FETCH_ASSOC);
+
+        // Vérifie si des tournois ont été trouvés
+        if ($tournaments === false) {
+            return [];
+        }
+
+        return $tournaments;
+    }
+
     public function getGamesPerStep($idTournament, $step)
     {
         // Récupère tous les jeux (matchs) d'un tournoi spécifié par son identifiant et une étape spécifiée
