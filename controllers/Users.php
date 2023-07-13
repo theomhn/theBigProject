@@ -40,7 +40,7 @@ class Users extends Controller
         } else {
             // Les informations d'identification sont incorrectes, renvoie une réponse d'erreur
             http_response_code(401);
-            echo json_encode('Adresse mail ou mot de passe incorrect');
+            echo json_encode('Adresse mail ou mot de passe incorrect', JSON_UNESCAPED_UNICODE);
         }
     }
 
@@ -91,12 +91,12 @@ class Users extends Controller
                 $link = $this->sendValidationMail($user);
                 echo json_encode($link);
             } else {
-                echo json_encode("Les mots de passe ne correspondent pas !");
+                echo json_encode("Les mots de passe ne correspondent pas !", JSON_UNESCAPED_UNICODE);
             }
         } catch (Exception $ex) {
             // Une exception s'est produite lors de la création de l'utilisateur, renvoie une réponse d'erreur
             http_response_code(400);
-            echo json_encode("Adresse mail déjà inscrite !");
+            echo json_encode("Adresse mail déjà inscrite !", JSON_UNESCAPED_UNICODE);
         }
     }
 }

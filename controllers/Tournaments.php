@@ -24,7 +24,7 @@ class Tournaments extends Controller
         // Vérifie si le tournoi existe
         if (!isset($tournament)) {
             http_response_code(404);
-            echo json_encode("Le tournoi n'existe pas");
+            echo json_encode("Le tournoi n'existe pas", JSON_UNESCAPED_UNICODE);
             return false;
         }
 
@@ -34,14 +34,14 @@ class Tournaments extends Controller
         // Vérifie si le tournoi a déjà commencé
         if ($date < $tournament['date_start']) {
             http_response_code(403);
-            echo json_encode("Le tournoi n'a pas encore commencé. Il commencera le " . $tournament['date_start']);
+            echo json_encode("Le tournoi n'a pas encore commencé. Il commencera le " . $tournament['date_start'], JSON_UNESCAPED_UNICODE);
             return false;
         }
 
         // Vérifie si le tournoi est terminé
         if ($date > $tournament['date_end']) {
             http_response_code(403);
-            echo json_encode("Le tournoi est terminé");
+            echo json_encode("Le tournoi est terminé", JSON_UNESCAPED_UNICODE);
             return false;
         }
 
@@ -51,7 +51,7 @@ class Tournaments extends Controller
         // Vérifie si le tournoi est complet (nombre maximum de participants atteint)
         if (count($allParticipants) >= $tournament['nbParticipants']) {
             http_response_code(403);
-            echo json_encode("Le tournoi est complet");
+            echo json_encode("Le tournoi est complet", JSON_UNESCAPED_UNICODE);
             return  false;
         }
 

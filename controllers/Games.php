@@ -28,7 +28,7 @@ class Games extends Controller
         // Vérifie si le match existe
         if (!$match) {
             http_response_code(403);
-            echo json_encode("Le match n'existe pas.");
+            echo json_encode("Le match n'existe pas.", JSON_UNESCAPED_UNICODE);
             return false;
         }
 
@@ -84,7 +84,7 @@ class Games extends Controller
         } else {
             // Si l'utilisateur courant ne fait pas partie du match, retourne une erreur
             http_response_code(403);
-            echo json_encode("Vous n'avez pas le droit de modifier un match dont vous ne faites pas partie.");
+            echo json_encode("Vous n'avez pas le droit de modifier un match dont vous ne faites pas partie.", JSON_UNESCAPED_UNICODE);
             return false;
         }
 
