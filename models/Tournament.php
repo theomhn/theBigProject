@@ -11,7 +11,7 @@ class Tournament extends Model
     public function getParticipants($id)
     {
         // Récupère tous les participants d'un tournoi spécifié par son identifiant
-        $participants = $this->_connexion->query("SELECT u.id, u.pseudo FROM users u JOIN users_tournaments ut ON u.id = ut.user_id WHERE ut.tournament_id = $id")->fetchAll(PDO::FETCH_ASSOC);
+        $participants = $this->_connexion->query("SELECT u.id, u.pseudo, ut.tournament_id FROM users u JOIN users_tournaments ut ON u.id = ut.user_id WHERE ut.tournament_id = $id")->fetchAll(PDO::FETCH_ASSOC);
 
         // Vérifie si des participants ont été trouvés
         if ($participants === false) {
