@@ -31,10 +31,13 @@ class Tournaments extends Controller
         // Récupère la date et l'heure actuelle
         $date = date("Y-m-d H:i:s");
 
+        // Calculer la date à laquelle les utilisateurs peuvent commencer à rejoindre
+        $joinDate = date("Y-m-d H:i:s", strtotime($tournament['date_start'] . ' -3 days'));
+
         // Vérifie si le tournoi a déjà commencé
-        if ($date < $tournament['date_start']) {
+        if ($date < $joinDate) {
             http_response_code(403);
-            echo json_encode("Le tournoi n'a pas encore commencé. Il commencera le " . $tournament['date_start'], JSON_UNESCAPED_UNICODE);
+            echo json_encode("Vous pourrez rejoindre le tournoi seulement 3 jours avant le début, à partir du " . $joinDate, JSON_UNESCAPED_UNICODE);
             return false;
         }
 
