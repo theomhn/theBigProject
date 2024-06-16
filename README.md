@@ -99,5 +99,5 @@ Pour tester l'application, vous devez être inscrit.
 
 - Sinon un compte de test est déjà créé.
 
-  - Les identifiant : admin@compte-test.test mot de passe : test
+  - Les identifiants : admin@compte-test.test mot de passe : test
     
